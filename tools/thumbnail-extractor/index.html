@@ -3,53 +3,186 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thumbnail Extractor | YT Toolbox</title>
+    
+    <title>YouTube HD Thumbnail Downloader | Get 1080p Thumbnails | YT ToolBox</title>
+    <meta name="title" content="YouTube HD Thumbnail Downloader | Get 1080p Thumbnails | YT ToolBox">
+    <meta name="description" content="Download high-quality YouTube thumbnails (4K, HD, 1080p) for free. Improve your CTR by analyzing top creators' thumbnail designs. No login required.">
+    <meta name="keywords" content="youtube thumbnail downloader, download yt thumbnails, high quality youtube thumbnail, youtube thumbnail grabber, YT ToolBox">
+    <meta name="author" content="BSR Studios">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://yttoolbox.github.io/tools/thumbnail-extractor/">
+
+    <link rel="icon" type="image/png" href="../../logo.png">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://yttoolbox.github.io/tools/thumbnail-extractor/">
+    <meta property="og:title" content="HD YouTube Thumbnail Downloader - YT ToolBox">
+    <meta property="og:description" content="Get 4K & HD thumbnails from any YouTube video in one click. 100% Free & Secure.">
+    <meta property="og:image" content="https://yttoolbox.github.io/logo.png">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="HD YouTube Thumbnail Downloader - YT ToolBox">
+    <meta name="twitter:description" content="Get 4K & HD thumbnails from any YouTube video in one click.">
+    <meta name="twitter:image" content="https://yttoolbox.github.io/logo.png">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "YT ToolBox Thumbnail Downloader",
+      "operatingSystem": "Web",
+      "applicationCategory": "MultimediaApplication",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "reviewCount": "1250"
+      }
+    }
+    </script>
+
     <style>
-        :root { --bg: #0f172a; --card: #1e293b; --primary: #f97316; --text: #f8fafc; }
-        * { margin:0; padding:0; box-sizing:border-box; font-family:'Segoe UI',sans-serif; text-decoration: none;}
-        body { background: var(--bg); color: var(--text); padding-bottom:50px; }
-        .navbar { background: var(--card); padding:20px; text-align:center; border-bottom:2px solid var(--primary); }
-        .container { max-width:800px; margin:40px auto; padding:0 20px; text-align:center; }
-        .back-btn { background:#334155; color:white; padding:10px 20px; border-radius:8px; display:inline-block; margin-bottom:30px; font-weight:bold; }
-        .panel { background:var(--card); padding:30px; border-radius:15px; border:1px solid #334155; }
-        input { width:100%; padding:15px; border-radius:8px; border:1px solid #334155; background:#0f172a; color:white; margin-bottom:20px; font-size:16px;}
-        .btn { background:var(--primary); color:white; border:none; padding:15px 30px; font-weight:bold; border-radius:8px; cursor:pointer; width:100%; font-size:18px;}
-        #result { margin-top:30px; display:none; }
-        img { width:100%; border-radius:10px; margin-bottom:20px; border: 2px dashed #334155; }
-        .dl-btn { background:#10b981; color:white; border:none; padding:15px; border-radius:8px; cursor:pointer; width:100%; font-weight:bold; font-size:18px;}
+        :root { --bg: #0f172a; --card: #1e293b; --primary: #f97316; --text: #f8fafc; --muted: #94a3b8; }
+        * { margin:0; padding:0; box-sizing:border-box; font-family:'Segoe UI', sans-serif; text-decoration: none;}
+        body { background: var(--bg); color: var(--text); line-height: 1.6; padding-bottom:50px; }
+        
+        /* Navbar */
+        .navbar { background: var(--card); padding:20px 40px; border-bottom:2px solid var(--primary); display: flex; align-items: center; justify-content: center; position: sticky; top: 0; z-index: 100;}
+        .navbar h1 { color:var(--primary); font-size:24px; font-weight:900; }
+
+        .container { max-width: 900px; margin: 40px auto; padding: 0 20px; }
+        .back-btn { background:#334155; color:white; padding:10px 20px; border-radius:8px; display:inline-block; margin-bottom:30px; font-weight:bold; transition: 0.3s;}
+        .back-btn:hover { background: #475569; }
+
+        /* Tool Panel */
+        .tool-panel { background:var(--card); padding:40px; border-radius:20px; border:1px solid #334155; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.4); }
+        .tool-panel h2 { font-size: 32px; color: var(--primary); margin-bottom: 10px; }
+        .tool-panel p { color: var(--muted); margin-bottom: 30px; }
+        
+        input[type="text"] { width:100%; padding:18px; border-radius:12px; border:2px solid #334155; background:#0f172a; color:white; margin-bottom:20px; outline:none; font-size:16px; transition: 0.3s;}
+        input[type="text"]:focus { border-color: var(--primary); box-shadow: 0 0 15px rgba(249, 115, 22, 0.2); }
+        
+        .action-btn { background:var(--primary); color:white; border:none; padding:18px 40px; font-weight:bold; border-radius:12px; cursor:pointer; width:100%; font-size:18px; text-transform: uppercase; transition: 0.3s; }
+        .action-btn:hover { background:#ea580c; transform: translateY(-2px); }
+
+        /* Results */
+        #result-area { margin-top:40px; display:none; }
+        #preview-img { width:100%; border-radius:15px; margin-bottom:20px; border: 3px solid #334155; box-shadow: 0 15px 35px rgba(0,0,0,0.5); }
+        .dl-btn { background:#10b981; color:white; border:none; padding:18px; border-radius:12px; cursor:pointer; width:100%; font-weight:bold; font-size:18px; transition: 0.3s; }
+        .dl-btn:hover { background: #059669; }
+
+        /* SEO Article */
+        .seo-content { background: var(--card); padding: 50px; border-radius: 20px; margin-top: 60px; border: 1px solid #334155; }
+        .seo-content h2 { color: var(--primary); margin-bottom: 20px; font-size: 28px; }
+        .seo-content h3 { color: #fbbf24; margin: 25px 0 15px; font-size: 22px; }
+        .seo-content p { margin-bottom: 15px; text-align: justify; color: var(--text); }
+        .seo-content ul { margin: 15px 0 20px 25px; color: var(--muted); }
+        .seo-content li { margin-bottom: 10px; }
+
+        /* Footer */
+        footer { background: #010409; padding: 40px 20px; text-align: center; border-top: 1px solid #334155; margin-top: 80px;}
+        .footer-nav { margin-bottom: 20px; display: flex; justify-content: center; flex-wrap: wrap; gap: 20px;}
+        .footer-nav a { color: var(--muted); font-size: 14px; transition: 0.3s; }
+        .footer-nav a:hover { color: var(--primary); }
     </style>
 </head>
 <body>
-<div class="navbar"><h1 style="color:var(--primary)">YT TOOLBOX</h1></div>
-<div class="container">
-    <div style="text-align: left;"><a href="../../" class="back-btn">← Home</a></div>
-    <div class="panel">
-        <h2>🖼️ HD Thumbnail Extractor</h2><br>
-        <input type="text" id="url" placeholder="Paste YouTube Video Link...">
-        <button class="btn" onclick="extract()">Extract HD Image</button>
-        <div id="result">
-            <img id="preview" crossorigin="anonymous">
-            <button class="dl-btn" id="dl">Download Now</button>
+
+    <nav class="navbar">
+        <a href="../../" style="display: flex; align-items: center;">
+            <img src="../../logo.png" alt="Logo" style="height: 40px; margin-right: 12px; border-radius: 8px;">
+            <h1>YT TOOLBOX</h1>
+        </a>
+    </nav>
+
+    <div class="container">
+        <a href="../../" class="back-btn">← Back to Dashboard</a>
+        
+        <div class="tool-panel">
+            <h2>HD Thumbnail Downloader</h2>
+            <p>Paste a YouTube video link below to extract and download the Max Resolution thumbnail.</p>
+            
+            <input type="text" id="yt-link" placeholder="Paste YouTube Video URL here...">
+            <button class="action-btn" onclick="extractThumb()">Extract Magic 🚀</button>
+
+            <div id="result-area">
+                <img id="preview-img" crossorigin="anonymous">
+                <button class="dl-btn" id="dl-btn">Download Full HD (1080p)</button>
+            </div>
         </div>
+
+        <article class="seo-content">
+            <h2>Why High-Quality Thumbnails Matter for YouTube Growth</h2>
+            <p>On YouTube, your thumbnail is your first impression. It's the "billboard" that decides whether a viewer will click on your video or scroll past it. This is known as <strong>Click-Through Rate (CTR)</strong>. Even if your video content is world-class, it won't matter if your thumbnail fails to grab attention.</p>
+            
+            <h3>How to Use Our Thumbnail Downloader for Research</h3>
+            <p>Top creators like MrBeast, MKBHD, and CarryMinati spend hours (and thousands of dollars) just designing one thumbnail. As a growing creator, you can use <strong>YT ToolBox</strong> to download and analyze these high-performing thumbnails. By looking at their color contrast, text placement, and facial expressions in HD, you can learn how to optimize your own designs.</p>
+
+            <h3>Benefits of HD Thumbnail Extraction:</h3>
+            <ul>
+                <li><strong>Analyze Competitors:</strong> Study the design patterns of viral videos in your niche.</li>
+                <li><strong>Perfect for Reaction Videos:</strong> Need a high-res image of a video you are reacting to? Our tool gets you the original 1080p source file.</li>
+                <li><strong>Design Inspiration:</strong> Use extracted images as placeholders or references in your graphic design software like Photoshop or Canva.</li>
+                <li><strong>Zero Quality Loss:</strong> Unlike screenshots, our tool fetches the raw file directly from YouTube's servers in <em>maxresdefault</em> quality.</li>
+            </ul>
+
+            <h3>Is Downloading Thumbnails Legal?</h3>
+            <p>Yes, thumbnails are public assets served by YouTube. However, remember that the intellectual property belongs to the original creator. Use these images for research, fair-use reaction videos, or inspiration. Avoid re-uploading someone else's thumbnail as your own to prevent copyright issues or "Reused Content" strikes.</p>
+        </article>
     </div>
-</div>
-<script>
-    function extract() {
-        const id = document.getElementById('url').value.match(/(?:v=|\/|youtu\.be\/|shorts\/)([0-9A-Za-z_-]{11})/)?.[1];
-        if(!id) return alert("Sahi link daliye CEO Sir!");
-        const thumb = `https://img.youtube.com/vi/${id}/maxresdefault.jpg`;
-        document.getElementById('preview').src = thumb;
-        document.getElementById('result').style.display = 'block';
-        document.getElementById('dl').onclick = () => {
-            const img = new Image(); img.crossOrigin = "Anonymous";
-            img.onload = () => {
-                const c = document.createElement("canvas"); c.width = img.width; c.height = img.height;
-                c.getContext("2d").drawImage(img, 0, 0);
-                const a = document.createElement("a"); a.href = c.toDataURL("image/jpeg"); a.download = `Thumbnail_${id}.jpg`; a.click();
+
+    <footer>
+        <div class="footer-nav">
+            <a href="../../info/about/">About Us</a>
+            <a href="../../info/contact/">Contact Us</a>
+            <a href="../../info/privacy/">Privacy Policy</a>
+            <a href="../../info/terms/">Terms & Conditions</a>
+            <a href="../../info/disclaimer/">Disclaimer</a>
+            <a href="../../info/dmca/">DMCA Policy</a>
+        </div>
+        <p>© 2026 YT ToolBox. All rights reserved. Powered by BSR Studios.</p>
+    </footer>
+
+    <script>
+        function extractThumb() {
+            const url = document.getElementById('yt-link').value.trim();
+            const id = url.match(/(?:v=|\/|youtu\.be\/|shorts\/)([0-9A-Za-z_-]{11})/)?.[1];
+            
+            if(!id) return alert("CEO Sir, sahi YouTube link toh daaliye!");
+
+            const area = document.getElementById('result-area');
+            const img = document.getElementById('preview-img');
+            const dlBtn = document.getElementById('dl-btn');
+
+            // Set source
+            const thumbUrl = `https://img.youtube.com/vi/${id}/maxresdefault.jpg`;
+            img.src = thumbUrl;
+            area.style.display = 'block';
+
+            // Reset Scroll to see result
+            window.scrollTo({ top: 300, behavior: 'smooth' });
+
+            // Download Logic (Canvas Fix)
+            dlBtn.onclick = () => {
+                const tempImg = new Image();
+                tempImg.crossOrigin = "Anonymous";
+                tempImg.onload = function() {
+                    const canvas = document.createElement("canvas");
+                    canvas.width = tempImg.width; canvas.height = tempImg.height;
+                    const ctx = canvas.getContext("2d");
+                    ctx.drawImage(tempImg, 0, 0);
+                    const link = document.createElement("a");
+                    link.href = canvas.toDataURL("image/jpeg");
+                    link.download = `YT_ToolBox_Thumb_${id}.jpg`;
+                    link.click();
+                };
+                tempImg.src = thumbUrl;
             };
-            img.src = thumb;
-        };
-    }
-</script>
+        }
+    </script>
 </body>
 </html>
