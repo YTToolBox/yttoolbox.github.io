@@ -3,10 +3,79 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="YT ToolBox is the ultimate free suite for YouTube Creators. Extract thumbnails, find viral tags, copy descriptions, and grow your channel faster.">
-    <meta name="keywords" content="YouTube tags extractor, YouTube thumbnail downloader, YouTube SEO tools, Channel assets, free YouTube tools">
-    <title>YT ToolBox | Ultimate SEO & Creator Suite for YouTube</title>
+    
+    <title>YT ToolBox | Ultimate Free YouTube SEO & Creator Suite</title>
+    <meta name="title" content="YT ToolBox | Ultimate Free YouTube SEO & Creator Suite">
+    <meta name="description" content="YT ToolBox is the ultimate free suite for YouTube Creators. Extract HD thumbnails, find viral tags, copy descriptions, and grow your channel faster.">
+    <meta name="keywords" content="YouTube tags extractor, YouTube thumbnail downloader, YouTube SEO tools, Channel assets, free YouTube tools, BSR Studios">
+    <meta name="author" content="BSR Studios">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://yttoolbox.github.io/">
+
     <link rel="icon" type="image/png" href="logo.png">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://yttoolbox.github.io/">
+    <meta property="og:title" content="YT ToolBox | Ultimate Free YouTube SEO Suite">
+    <meta property="og:description" content="Extract HD thumbnails, viral tags, and SEO metadata in one click. 100% Free tool by BSR Studios.">
+    <meta property="og:image" content="https://yttoolbox.github.io/logo.png">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://yttoolbox.github.io/">
+    <meta name="twitter:title" content="YT ToolBox | Ultimate Free YouTube SEO Suite">
+    <meta name="twitter:description" content="Extract HD thumbnails, viral tags, and SEO metadata in one click. 100% Free tool by BSR Studios.">
+    <meta name="twitter:image" content="https://yttoolbox.github.io/logo.png">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebSite",
+          "@id": "https://yttoolbox.github.io/#website",
+          "url": "https://yttoolbox.github.io/",
+          "name": "YT ToolBox",
+          "description": "The ultimate free suite for YouTube Creators.",
+          "publisher": {
+            "@id": "https://yttoolbox.github.io/#organization"
+          },
+          "potentialAction": [{
+            "@type": "SearchAction",
+            "target": {
+              "@type": "EntryPoint",
+              "urlTemplate": "https://yttoolbox.github.io/?s={search_term_string}"
+            },
+            "query-input": "required name=search_term_string"
+          }]
+        },
+        {
+          "@type": "Organization",
+          "@id": "https://yttoolbox.github.io/#organization",
+          "name": "BSR Studios",
+          "url": "https://yttoolbox.github.io/",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://yttoolbox.github.io/logo.png"
+          },
+          "sameAs": [
+            "https://github.com/BSR-Studios",
+            "https://anywebwall.github.io/"
+          ]
+        },
+        {
+          "@type": "SoftwareApplication",
+          "name": "YT ToolBox Extractor",
+          "operatingSystem": "Web",
+          "applicationCategory": "UtilitiesApplication",
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+          }
+        }
+      ]
+    }
+    </script>
 
     <style>
         :root { --bg: #0f172a; --card: #1e293b; --primary: #f97316; --text: #f8fafc; --muted: #94a3b8; }
@@ -15,6 +84,7 @@
         
         /* Navbar */
         .navbar { background: var(--card); padding:20px 40px; display: flex; justify-content: space-between; align-items: center; border-bottom:2px solid var(--primary); position: sticky; top: 0; z-index: 100;}
+        .navbar a.brand { display: flex; align-items: center; justify-content: center;}
         .navbar h1 { color:var(--primary); font-size:28px; font-weight:900; letter-spacing: 1px;}
         .navbar .nav-links a { color: var(--text); margin-left: 20px; font-weight: bold; transition: 0.3s;}
         .navbar .nav-links a:hover { color: var(--primary); }
@@ -63,7 +133,7 @@
 <body>
 
     <nav class="navbar">
-        <a href="#" style="display: flex; align-items: center; text-decoration: none;">
+        <a href="#" class="brand">
             <img src="logo.png" alt="Logo" style="height: 45px; margin-right: 12px; border-radius: 8px;">
             <h1>YT TOOLBOX</h1>
         </a>
@@ -144,7 +214,7 @@
             <a href="info/disclaimer/">Disclaimer</a>
             <a href="info/dmca/">DMCA Policy</a>
         </div>
-        <p>© 2026 YtToolBox. All rights reserved. Powered by BSR Studios.</p>
+        <p>© 2026 YT ToolBox. All rights reserved. Powered by BSR Studios.</p>
     </footer>
 
 </body>
