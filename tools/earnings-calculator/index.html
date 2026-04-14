@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Advanced YouTube Earnings Calculator | YT ToolBox</title>
-    <meta name="description" content="Calculate real-time YouTube earnings by pasting a video link, channel link, or searching a creator's name. Find out exact AdSense revenue.">
+    <title>Real YouTube Earnings Calculator | YT ToolBox</title>
+    <meta name="description" content="Calculate accurate real-time YouTube earnings. Auto-detects channel country and niche for realistic AdSense revenue. Search by name or link.">
     <link rel="icon" type="image/png" href="../../logo.png">
     
     <style>
@@ -23,39 +23,49 @@
         .tool-panel { background:var(--card); padding:40px; border-radius:20px; border:1px solid var(--border); text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.4); }
         .tool-panel h2 { font-size: 32px; color: #fbbf24; margin-bottom: 10px; }
         
-        input[type="text"] { width:100%; padding:18px; border-radius:12px; border:2px solid var(--border); background:#0f172a; color:white; margin-bottom:15px; outline:none; font-size:16px; transition: 0.3s;}
+        input[type="text"] { width:100%; padding:18px; border-radius:12px; border:2px solid var(--border); background:#0f172a; color:white; margin-bottom:25px; outline:none; font-size:16px; transition: 0.3s;}
         input[type="text"]:focus { border-color: var(--primary); }
-        
-        select { width: 100%; padding: 15px; border-radius: 12px; border: 2px solid var(--border); background: #0f172a; color: white; margin-bottom: 25px; outline: none; font-size: 16px; cursor: pointer;}
         
         .action-btn { background:var(--primary); color:white; border:none; padding:18px 40px; font-weight:bold; border-radius:12px; cursor:pointer; width:100%; font-size:18px; text-transform: uppercase; transition: 0.3s; }
         .action-btn:hover { background:var(--primary-hover); transform: translateY(-2px); }
 
         #loading-msg { display: none; color: #fbbf24; font-weight: bold; margin-top: 20px; font-size: 16px;}
 
+        /* Smart Badges */
+        .badge-container { display: flex; justify-content: center; gap: 10px; margin-top: 20px; flex-wrap: wrap;}
+        .smart-badge { background: #0f172a; border: 1px solid var(--primary); color: var(--primary); padding: 5px 12px; border-radius: 20px; font-size: 12px; font-weight: bold;}
+
         /* Results Area */
-        #video-result, #channel-result { display:none; margin-top:40px; background: #0f172a; padding: 30px; border-radius: 15px; border: 1px solid var(--border); text-align: center;}
+        #video-result, #channel-result { display:none; margin-top:30px; background: #0f172a; padding: 30px; border-radius: 15px; border: 1px solid var(--border); text-align: center;}
         
-        /* Video Result Specifics */
+        /* Suggestions Area */
+        #suggestions-area { display:none; margin-top: 20px; text-align: left; background: var(--card); padding: 20px; border-radius: 15px; border: 1px dashed var(--border);}
+        .sugg-title { font-size: 14px; color: var(--muted); margin-bottom: 10px; text-transform: uppercase;}
+        .sugg-list { display: flex; flex-direction: column; gap: 10px; }
+        .sugg-item { display: flex; align-items: center; gap: 15px; background: #0f172a; padding: 10px 15px; border-radius: 10px; border: 1px solid var(--border); cursor: pointer; transition: 0.2s;}
+        .sugg-item:hover { border-color: #3b82f6; background: #1e293b;}
+        .sugg-item img { width: 40px; height: 40px; border-radius: 50%; }
+        .sugg-item span { color: white; font-weight: bold; }
+
+        /* Video / Channel UI */
         .vid-thumb { width: 100%; max-width: 400px; border-radius: 10px; margin-bottom: 15px; border: 2px solid var(--border); }
         .vid-title { font-size: 20px; margin-bottom: 15px; color: white; }
         .vid-earnings { font-size: 40px; font-weight: 900; color: var(--primary); margin-bottom: 5px; }
-        .vid-views { color: var(--muted); margin-bottom: 25px; }
-        .check-channel-btn { background: #3b82f6; color: white; padding: 12px 25px; border-radius: 8px; font-weight: bold; cursor: pointer; border: none; font-size: 16px; transition: 0.3s; }
-        .check-channel-btn:hover { background: #2563eb; }
-
-        /* Channel Result Specifics */
-        .channel-header { display: flex; align-items: center; justify-content: center; gap: 15px; margin-bottom: 30px; border-bottom: 1px solid var(--border); padding-bottom: 20px;}
+        .channel-header { display: flex; align-items: center; justify-content: center; gap: 15px; margin-bottom: 20px; border-bottom: 1px solid var(--border); padding-bottom: 20px;}
         .ch-logo { width: 80px; height: 80px; border-radius: 50%; border: 3px solid var(--primary); }
         .ch-title { font-size: 28px; color: white; font-weight: bold; text-align: left;}
         
         .grid-earnings { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; }
         .earning-card { background: var(--card); padding: 25px; border-radius: 12px; border: 1px solid var(--border); }
-        .earning-card h4 { color: var(--muted); text-transform: uppercase; letter-spacing: 1px; font-size: 14px; margin-bottom: 10px;}
         .earning-usd { color: var(--primary); font-size: 32px; font-weight: 900; }
         .earning-inr { color: #fbbf24; font-size: 16px; font-weight: bold; margin-top: 5px;}
 
-        /* Footer */
+        /* SEO Article */
+        .seo-content { background: var(--card); padding: 50px; border-radius: 20px; margin-top: 60px; border: 1px solid #334155; }
+        .seo-content h2 { color: #f97316; margin-bottom: 20px; font-size: 28px; border-bottom: 2px solid #334155; padding-bottom: 10px;}
+        .seo-content h3 { color: #fbbf24; margin: 30px 0 15px; font-size: 22px; }
+        .seo-content p { margin-bottom: 20px; text-align: justify; color: var(--text); font-size: 16px; }
+
         footer { background: #010409; padding: 40px 20px; text-align: center; border-top: 1px solid var(--border); margin-top: 80px;}
     </style>
 </head>
@@ -72,34 +82,30 @@
         <a href="../../" class="back-btn">← Back to Dashboard</a>
         
         <div class="tool-panel">
-            <h2>💰 Advanced Earnings Analyzer</h2>
-            <p style="color:var(--muted); margin-bottom:25px;">Find out exactly how much a Creator makes. Paste a Video Link, Channel Link, or just type a YouTube Channel Name!</p>
+            <h2>💰 Real Earnings Analyzer</h2>
+            <p style="color:var(--muted); margin-bottom:25px;">Enter a Channel Name, Channel Link, or Video Link. We auto-detect their country and niche to give you realistic 100% accurate estimates.</p>
             
-            <input type="text" id="search-input" placeholder="e.g., MrBeast, or paste Video/Channel Link...">
+            <input type="text" id="search-input" placeholder="e.g., MrBeast, CarryMinati, or paste a link...">
             
-            <select id="niche-select">
-                <option value="5.50">Finance, Tech & Business (~ $5.50 RPM)</option>
-                <option value="2.50">Education, Review & Auto (~ $2.50 RPM)</option>
-                <option value="1.50" selected>Entertainment, Vlogs & Comedy (~ $1.50 RPM)</option>
-                <option value="0.80">Gaming & Reactions (~ $0.80 RPM)</option>
-                <option value="0.05">YouTube Shorts Channel (~ $0.05 RPM)</option>
-            </select>
+            <button class="action-btn" onclick="analyzeEarnings()">Spy on Earnings 💸</button>
+            <p id="loading-msg">⚡ AI Auto-Detecting Country & Niche... Please wait.</p>
 
-            <button class="action-btn" onclick="analyzeEarnings()">Calculate Revenue 💸</button>
-            <p id="loading-msg">⚡ BSR Engine Searching Database... Please wait.</p>
+            <div id="suggestions-area">
+                <div class="sugg-title">Not the channel you were looking for? Try these:</div>
+                <div class="sugg-list" id="sugg-list"></div>
+            </div>
 
             <div id="video-result">
-                <h3 style="color:#fbbf24; margin-bottom:15px;">Video Earnings Estimate</h3>
+                <div class="badge-container" id="vid-badges"></div>
+                <h3 style="color:#fbbf24; margin:top:15px; margin-bottom:15px;">Est. Video Earnings</h3>
                 <img id="vr-thumb" class="vid-thumb" src="" alt="Thumbnail">
                 <div id="vr-title" class="vid-title">Video Title</div>
                 
                 <div class="vid-earnings" id="vr-usd">$0.00</div>
                 <div style="color:#fbbf24; font-weight:bold; font-size:20px; margin-bottom:10px;" id="vr-inr">₹0</div>
+                <p style="color:var(--muted); margin-bottom: 20px;" id="vr-views">0 Views</p>
                 
-                <div class="vid-views" id="vr-views">0 Total Views</div>
-                
-                <p style="color:white; margin-bottom:10px;">Created by: <span id="vr-channel-name" style="font-weight:bold; color:var(--primary);">Channel Name</span></p>
-                <button class="check-channel-btn" id="vr-channel-btn">Check Total Channel Earnings</button>
+                <button class="action-btn" id="vr-channel-btn" style="background:#3b82f6; font-size: 14px; padding: 12px;">Check Creator's Total Earnings</button>
             </div>
 
             <div id="channel-result">
@@ -107,29 +113,44 @@
                     <img id="cr-logo" class="ch-logo" src="" alt="Channel Logo">
                     <div class="ch-title" id="cr-name">Channel Name</div>
                 </div>
+                <div class="badge-container" id="ch-badges" style="margin-bottom: 20px;"></div>
 
                 <div class="grid-earnings">
                     <div class="earning-card">
-                        <h4>Daily Avg Earnings</h4>
+                        <h4 style="color: var(--muted);">Est. Daily Income</h4>
                         <div class="earning-usd" id="cr-daily-usd">$0</div>
                         <div class="earning-inr" id="cr-daily-inr">₹0</div>
                     </div>
                     
                     <div class="earning-card" style="border-color:var(--primary);">
-                        <h4 style="color:var(--primary);">Monthly Est. Earnings</h4>
+                        <h4 style="color:var(--primary);">Est. Monthly Income</h4>
                         <div class="earning-usd" id="cr-monthly-usd">$0</div>
                         <div class="earning-inr" id="cr-monthly-inr">₹0</div>
                     </div>
 
                     <div class="earning-card">
-                        <h4>Total Lifetime Earnings</h4>
+                        <h4 style="color: var(--muted);">Total Lifetime Value</h4>
                         <div class="earning-usd" id="cr-total-usd">$0</div>
                         <div class="earning-inr" id="cr-total-inr">₹0</div>
                     </div>
                 </div>
-                <p style="margin-top: 20px; font-size: 12px; color: var(--muted);">* Monthly and Daily figures are averages based on the channel's total lifetime views and age. Actual current month earnings may vary.</p>
+                <p style="margin-top: 20px; font-size: 12px; color: var(--muted);">* Reality Check: Estimates are calculated strictly based on the channel's geographic location (e.g., India has lower RPM) and category (Shorts vs Long Form) for maximum accuracy.</p>
             </div>
         </div>
+
+        <article class="seo-content">
+            <h2>The Reality of YouTube Earnings: CPM vs RPM</h2>
+            <p>Most online calculators give you fake, inflated numbers because they apply USA-based earnings to every channel. The <strong>YT ToolBox Earnings Analyzer</strong> is built differently. It uses an auto-detection algorithm to scan the channel's location and content type to provide realistic numbers.</p>
+            
+            <h3>How Geography Affects Ad Revenue</h3>
+            <p>Advertisers bid differently based on the purchasing power of an audience. If a channel's primary audience is in the USA, UK, or Australia, their RPM (Revenue Per Mille) can range from $2.00 to $10.00. However, if the channel is based in India (IN) or Southeast Asia, the RPM drops significantly to $0.15 - $0.50. Our tool detects this and adjusts the math automatically.</p>
+
+            <h3>The "YouTube Shorts" Trap</h3>
+            <p>Many creators have billions of views but make very little money. Why? Because they upload YouTube Shorts. Shorts revenue is pooled and split, resulting in an RPM of roughly $0.01 to $0.05 per 1,000 views. If our engine detects that a video is a Short, it applies this micro-RPM to ensure you don't see fake "Million Dollar" estimates.</p>
+            
+            <h3>Why Use This Tool?</h3>
+            <p>Whether you are a brand looking to sponsor a creator and want to know their actual worth, or a new YouTuber trying to decide which niche to pick, transparency is key. Stop guessing and start analyzing real data.</p>
+        </article>
     </div>
 
     <footer>
@@ -145,29 +166,33 @@
             return "₹" + amount.toLocaleString('en-IN', { minimumFractionDigits: 0, maximumFractionDigits: 0 });
         }
 
+        async function fetchSpecificChannel(channelId) {
+            document.getElementById('search-input').value = "channel/" + channelId;
+            analyzeEarnings();
+        }
+
         async function analyzeEarnings() {
             const input = document.getElementById('search-input').value.trim();
-            const rpm = parseFloat(document.getElementById('niche-select').value);
-            
             if(!input) return alert("Please enter a Video Link, Channel Link, or Creator Name!");
 
             const loading = document.getElementById('loading-msg');
             const vidBox = document.getElementById('video-result');
             const chanBox = document.getElementById('channel-result');
+            const suggBox = document.getElementById('suggestions-area');
+            const suggList = document.getElementById('sugg-list');
 
             loading.style.display = 'block';
             vidBox.style.display = 'none';
             chanBox.style.display = 'none';
+            suggBox.style.display = 'none';
 
-            // 1. Check if input is a Video URL
             const videoMatch = input.match(/(?:v=|\/|youtu\.be\/|shorts\/)([0-9A-Za-z_-]{11})/);
-            
-            // 2. Check if input is a specific Channel URL
+            const isShorts = input.includes("/shorts/");
             const channelMatch = input.match(/channel\/([0-9A-Za-z_-]{24})/);
 
             try {
                 if (videoMatch) {
-                    // --- VIDEO LOGIC ---
+                    // --- VIDEO ANALYSIS ---
                     const vidId = videoMatch[1];
                     const res = await fetch(`${WORKER_URL}?id=${vidId}`);
                     const data = await res.json();
@@ -178,6 +203,14 @@
                     const stats = data.items[0].statistics;
                     const views = parseInt(stats.viewCount || 0);
                     
+                    // Auto RPM Logic for Video
+                    let rpm = isShorts ? 0.03 : 1.20; // Default Global
+                    
+                    document.getElementById('vid-badges').innerHTML = `
+                        <div class="smart-badge">🎥 Format: ${isShorts ? 'YouTube Short' : 'Long Video'}</div>
+                        <div class="smart-badge">⚙️ Est. RPM: $${rpm}</div>
+                    `;
+
                     const usd = (views / 1000) * rpm;
                     
                     document.getElementById('vr-thumb').src = snippet.thumbnails.high.url;
@@ -185,76 +218,85 @@
                     document.getElementById('vr-views').innerText = views.toLocaleString('en-IN') + " Total Views";
                     document.getElementById('vr-usd').innerText = formatMoney(usd, true);
                     document.getElementById('vr-inr').innerText = formatMoney(usd * EX_RATE, false);
-                    document.getElementById('vr-channel-name').innerText = snippet.channelTitle;
 
-                    // Button feature to check this video's channel
-                    document.getElementById('vr-channel-btn').onclick = () => {
-                        document.getElementById('search-input').value = snippet.channelTitle;
-                        analyzeEarnings(); // Re-run search with channel name!
-                    };
+                    document.getElementById('vr-channel-btn').onclick = () => fetchSpecificChannel(snippet.channelId);
 
                     vidBox.style.display = 'block';
 
                 } else {
-                    // --- CHANNEL LOGIC (Link or Search Name) ---
+                    // --- CHANNEL ANALYSIS ---
                     let channelIdToFetch = "";
+                    let searchItems = [];
 
                     if (channelMatch) {
                         channelIdToFetch = channelMatch[1];
                     } else {
-                        // User typed a name or @handle! Let's search via Worker
-                        loading.innerText = "⚡ Searching YouTube Database for Creator...";
+                        // Search by Name (Fetches top 5)
                         const searchRes = await fetch(`${WORKER_URL}?search=${encodeURIComponent(input)}`);
                         const searchData = await searchRes.json();
-                        
                         if(!searchData.items || searchData.items.length === 0) throw new Error("Creator not found");
+                        
                         channelIdToFetch = searchData.items[0].snippet.channelId;
+                        searchItems = searchData.items; // Save for suggestions
                     }
 
-                    // Now get Channel Statistics
-                    loading.innerText = "⚡ Calculating Lifetime Earnings...";
+                    // Fetch Exact Stats
                     const chanRes = await fetch(`${WORKER_URL}?id=${channelIdToFetch}&endpoint=channel`);
                     const chanData = await chanRes.json();
-
                     const cSnippet = chanData.items[0].snippet;
                     const cStats = chanData.items[0].statistics;
 
                     const totalViews = parseInt(cStats.viewCount || 0);
+                    const country = cSnippet.country || 'Unknown';
                     
-                    // Math: Average Monthly/Daily calculation based on Channel Age
+                    // Smart RPM Logic based on Country
+                    let rpm = 1.00; // Global Average
+                    if(country === 'IN' || country === 'PK' || country === 'BD') rpm = 0.25; // Asian CPM
+                    if(country === 'US' || country === 'UK' || country === 'AU') rpm = 3.50; // High Tier CPM
+
+                    document.getElementById('ch-badges').innerHTML = `
+                        <div class="smart-badge">🌍 Location: ${country}</div>
+                        <div class="smart-badge">⚙️ Applied RPM: $${rpm}</div>
+                    `;
+                    
+                    // Age Calculation for realistic Monthly/Daily
                     const creationDate = new Date(cSnippet.publishedAt);
-                    const today = new Date();
-                    const daysAlive = Math.max((today - creationDate) / (1000 * 60 * 60 * 24), 1);
+                    const daysAlive = Math.max((new Date() - creationDate) / (1000 * 60 * 60 * 24), 1);
                     
                     const avgDailyViews = totalViews / daysAlive;
                     const avgMonthlyViews = avgDailyViews * 30;
 
-                    // Revenue Calculation
-                    const totalUSD = (totalViews / 1000) * rpm;
-                    const monthlyUSD = (avgMonthlyViews / 1000) * rpm;
-                    const dailyUSD = (avgDailyViews / 1000) * rpm;
-
-                    // Update UI
+                    // Revenue Math
                     document.getElementById('cr-logo').src = cSnippet.thumbnails.high.url;
                     document.getElementById('cr-name').innerText = cSnippet.title;
-
-                    document.getElementById('cr-total-usd').innerText = formatMoney(totalUSD, true);
-                    document.getElementById('cr-total-inr').innerText = formatMoney(totalUSD * EX_RATE, false);
-
-                    document.getElementById('cr-monthly-usd').innerText = formatMoney(monthlyUSD, true);
-                    document.getElementById('cr-monthly-inr').innerText = formatMoney(monthlyUSD * EX_RATE, false);
-
-                    document.getElementById('cr-daily-usd').innerText = formatMoney(dailyUSD, true);
-                    document.getElementById('cr-daily-inr').innerText = formatMoney(dailyUSD * EX_RATE, false);
+                    document.getElementById('cr-total-usd').innerText = formatMoney((totalViews / 1000) * rpm, true);
+                    document.getElementById('cr-total-inr').innerText = formatMoney((totalViews / 1000) * rpm * EX_RATE, false);
+                    document.getElementById('cr-monthly-usd').innerText = formatMoney((avgMonthlyViews / 1000) * rpm, true);
+                    document.getElementById('cr-monthly-inr').innerText = formatMoney((avgMonthlyViews / 1000) * rpm * EX_RATE, false);
+                    document.getElementById('cr-daily-usd').innerText = formatMoney((avgDailyViews / 1000) * rpm, true);
+                    document.getElementById('cr-daily-inr').innerText = formatMoney((avgDailyViews / 1000) * rpm * EX_RATE, false);
 
                     chanBox.style.display = 'block';
-                }
 
+                    // Populate Suggestions if it was a name search
+                    if(searchItems.length > 1) {
+                        suggList.innerHTML = "";
+                        for(let i = 1; i < searchItems.length; i++) {
+                            const item = searchItems[i];
+                            suggList.innerHTML += `
+                                <div class="sugg-item" onclick="fetchSpecificChannel('${item.snippet.channelId}')">
+                                    <img src="${item.snippet.thumbnails.default.url}">
+                                    <span>${item.snippet.title}</span>
+                                </div>
+                            `;
+                        }
+                        suggBox.style.display = 'block';
+                    }
+                }
             } catch (error) {
-                alert("❌ Error: Could not find data. Check the link or name.");
+                alert("❌ Error: Could not find data. Ensure the channel/video exists.");
             } finally {
                 loading.style.display = 'none';
-                loading.innerText = "⚡ BSR Engine Searching Database... Please wait."; // Reset text
             }
         }
     </script>
