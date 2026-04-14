@@ -3,111 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <title>YouTube Earnings & CPM Calculator | Estimate AdSense Revenue | YT ToolBox</title>
-    <meta name="title" content="YouTube Earnings & CPM Calculator | Estimate AdSense Revenue | YT ToolBox">
-    <meta name="description" content="Calculate your estimated YouTube AdSense earnings based on daily views and channel niche (CPM/RPM). 100% Free real-time money calculator for creators.">
-    <meta name="keywords" content="youtube money calculator, youtube earnings calculator, youtube cpm calculator, how much youtube pays, ad revenue calculator, YT ToolBox">
-    <meta name="author" content="BSR Studios">
-    <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://yttoolbox.github.io/tools/earnings-calculator/">
-
+    <title>Advanced YouTube Earnings Calculator | YT ToolBox</title>
+    <meta name="description" content="Calculate real-time YouTube earnings by pasting a video link, channel link, or searching a creator's name. Find out exact AdSense revenue.">
     <link rel="icon" type="image/png" href="../../logo.png">
-
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://yttoolbox.github.io/tools/earnings-calculator/">
-    <meta property="og:title" content="YouTube Earnings Calculator - YT ToolBox">
-    <meta property="og:description" content="Find out exactly how much YouTubers make. Calculate daily, monthly, and yearly revenue based on views and niche.">
-    <meta property="og:image" content="https://yttoolbox.github.io/logo.png">
-
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="YouTube Earnings Calculator - YT ToolBox">
-    <meta name="twitter:description" content="Find out exactly how much YouTubers make. Calculate daily, monthly, and yearly revenue based on views.">
-    <meta name="twitter:image" content="https://yttoolbox.github.io/logo.png">
-
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "SoftwareApplication",
-      "name": "YT ToolBox Earnings Calculator",
-      "operatingSystem": "Web",
-      "applicationCategory": "FinanceApplication",
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "USD"
-      },
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "4.9",
-        "reviewCount": "5120"
-      }
-    }
-    </script>
-
+    
     <style>
-        :root { --bg: #0f172a; --card: #1e293b; --primary: #f97316; --text: #f8fafc; --muted: #94a3b8; }
-        * { margin:0; padding:0; box-sizing:border-box; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; text-decoration: none;}
+        :root { --bg: #0f172a; --card: #1e293b; --primary: #10b981; --primary-hover: #059669; --text: #f8fafc; --muted: #94a3b8; --border: #334155; }
+        * { margin:0; padding:0; box-sizing:border-box; font-family:'Segoe UI', sans-serif; text-decoration: none;}
         body { background: var(--bg); color: var(--text); line-height: 1.6; padding-bottom:50px; }
         
-        /* Navbar */
-        .navbar { background: var(--card); padding:20px 40px; border-bottom:2px solid var(--primary); display: flex; align-items: center; justify-content: center; position: sticky; top: 0; z-index: 100;}
-        .navbar h1 { color:var(--primary); font-size:24px; font-weight:900; }
+        .navbar { background: var(--card); padding:20px; border-bottom:2px solid #f97316; display: flex; align-items: center; justify-content: center; position: sticky; top: 0; z-index: 100;}
+        .navbar h1 { color:#f97316; font-size:24px; font-weight:900; }
 
         .container { max-width: 900px; margin: 40px auto; padding: 0 20px; }
-        .back-btn { background:#334155; color:white; padding:10px 20px; border-radius:8px; display:inline-block; margin-bottom:30px; font-weight:bold; transition: 0.3s;}
+        .back-btn { background:var(--border); color:white; padding:10px 20px; border-radius:8px; display:inline-block; margin-bottom:20px; font-weight:bold; transition: 0.3s;}
         .back-btn:hover { background: #475569; }
 
-        /* Tool Panel */
-        .tool-panel { background:var(--card); padding:40px; border-radius:20px; border:1px solid #334155; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.4); }
-        .tool-panel h2 { font-size: 32px; color: var(--primary); margin-bottom: 10px; }
-        .tool-panel p { color: var(--muted); margin-bottom: 30px; font-size: 16px;}
+        /* Main Panel */
+        .tool-panel { background:var(--card); padding:40px; border-radius:20px; border:1px solid var(--border); text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.4); }
+        .tool-panel h2 { font-size: 32px; color: #fbbf24; margin-bottom: 10px; }
         
-        /* Interactive Controls */
-        .control-group { margin-bottom: 30px; text-align: left; background: #0f172a; padding: 25px; border-radius: 15px; border: 1px solid #334155;}
-        .control-group label { display: block; font-size: 18px; font-weight: bold; color: var(--text); margin-bottom: 15px; }
+        input[type="text"] { width:100%; padding:18px; border-radius:12px; border:2px solid var(--border); background:#0f172a; color:white; margin-bottom:15px; outline:none; font-size:16px; transition: 0.3s;}
+        input[type="text"]:focus { border-color: var(--primary); }
         
-        /* Custom Slider */
-        .slider-container { display: flex; align-items: center; gap: 15px; }
-        input[type="range"] { flex: 1; -webkit-appearance: none; height: 8px; border-radius: 5px; background: #334155; outline: none; }
-        input[type="range"]::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 25px; height: 25px; border-radius: 50%; background: var(--primary); cursor: pointer; transition: 0.2s; }
-        input[type="range"]::-webkit-slider-thumb:hover { transform: scale(1.2); }
+        select { width: 100%; padding: 15px; border-radius: 12px; border: 2px solid var(--border); background: #0f172a; color: white; margin-bottom: 25px; outline: none; font-size: 16px; cursor: pointer;}
         
-        .view-display { font-size: 22px; font-weight: bold; color: #10b981; background: #1e293b; padding: 10px 20px; border-radius: 8px; border: 1px solid #334155; min-width: 150px; text-align: center;}
+        .action-btn { background:var(--primary); color:white; border:none; padding:18px 40px; font-weight:bold; border-radius:12px; cursor:pointer; width:100%; font-size:18px; text-transform: uppercase; transition: 0.3s; }
+        .action-btn:hover { background:var(--primary-hover); transform: translateY(-2px); }
 
-        /* Dropdown */
-        select { width: 100%; padding: 15px; border-radius: 12px; border: 2px solid #334155; background: #1e293b; color: white; font-size: 16px; outline: none; cursor: pointer; transition: 0.3s;}
-        select:focus { border-color: var(--primary); }
+        #loading-msg { display: none; color: #fbbf24; font-weight: bold; margin-top: 20px; font-size: 16px;}
 
         /* Results Area */
-        .results-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 30px;}
-        .money-card { background: linear-gradient(145deg, #1e293b, #0f172a); border: 2px solid #334155; border-radius: 15px; padding: 30px 20px; text-align: center; transition: 0.3s; position: relative; overflow: hidden;}
-        .money-card:hover { border-color: #10b981; transform: translateY(-5px); box-shadow: 0 10px 25px rgba(16, 185, 129, 0.2); }
+        #video-result, #channel-result { display:none; margin-top:40px; background: #0f172a; padding: 30px; border-radius: 15px; border: 1px solid var(--border); text-align: center;}
         
-        .money-card::before { content: '💸'; position: absolute; right: -20px; top: -20px; font-size: 80px; opacity: 0.05; }
-        
-        .card-title { color: var(--muted); font-size: 16px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px; font-weight: bold;}
-        .usd-value { color: #10b981; font-size: 36px; font-weight: 900; margin-bottom: 5px; }
-        .inr-value { color: #fbbf24; font-size: 18px; font-weight: 600; }
+        /* Video Result Specifics */
+        .vid-thumb { width: 100%; max-width: 400px; border-radius: 10px; margin-bottom: 15px; border: 2px solid var(--border); }
+        .vid-title { font-size: 20px; margin-bottom: 15px; color: white; }
+        .vid-earnings { font-size: 40px; font-weight: 900; color: var(--primary); margin-bottom: 5px; }
+        .vid-views { color: var(--muted); margin-bottom: 25px; }
+        .check-channel-btn { background: #3b82f6; color: white; padding: 12px 25px; border-radius: 8px; font-weight: bold; cursor: pointer; border: none; font-size: 16px; transition: 0.3s; }
+        .check-channel-btn:hover { background: #2563eb; }
 
-        /* LONG SEO ARTICLE */
-        .seo-content { background: var(--card); padding: 50px; border-radius: 20px; margin-top: 60px; border: 1px solid #334155; }
-        .seo-content h2 { color: var(--primary); margin-bottom: 20px; font-size: 28px; border-bottom: 2px solid #334155; padding-bottom: 10px;}
-        .seo-content h3 { color: #fbbf24; margin: 30px 0 15px; font-size: 22px; }
-        .seo-content p { margin-bottom: 20px; text-align: justify; color: var(--text); font-size: 16px; }
-        .seo-content ul { margin: 15px 0 25px 25px; color: var(--muted); }
-        .seo-content li { margin-bottom: 12px; }
+        /* Channel Result Specifics */
+        .channel-header { display: flex; align-items: center; justify-content: center; gap: 15px; margin-bottom: 30px; border-bottom: 1px solid var(--border); padding-bottom: 20px;}
+        .ch-logo { width: 80px; height: 80px; border-radius: 50%; border: 3px solid var(--primary); }
+        .ch-title { font-size: 28px; color: white; font-weight: bold; text-align: left;}
+        
+        .grid-earnings { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; }
+        .earning-card { background: var(--card); padding: 25px; border-radius: 12px; border: 1px solid var(--border); }
+        .earning-card h4 { color: var(--muted); text-transform: uppercase; letter-spacing: 1px; font-size: 14px; margin-bottom: 10px;}
+        .earning-usd { color: var(--primary); font-size: 32px; font-weight: 900; }
+        .earning-inr { color: #fbbf24; font-size: 16px; font-weight: bold; margin-top: 5px;}
 
         /* Footer */
-        footer { background: #010409; padding: 40px 20px; text-align: center; border-top: 1px solid #334155; margin-top: 80px;}
-        .footer-nav { margin-bottom: 20px; display: flex; justify-content: center; flex-wrap: wrap; gap: 20px;}
-        .footer-nav a { color: var(--muted); font-size: 14px; transition: 0.3s; }
-        .footer-nav a:hover { color: var(--primary); }
-        
-        @media (max-width: 768px) {
-            .slider-container { flex-direction: column; }
-            .view-display { width: 100%; }
-        }
+        footer { background: #010409; padding: 40px 20px; text-align: center; border-top: 1px solid var(--border); margin-top: 80px;}
     </style>
 </head>
 <body>
@@ -115,7 +64,7 @@
     <nav class="navbar">
         <a href="../../" style="display: flex; align-items: center;">
             <img src="../../logo.png" alt="Logo" style="height: 40px; margin-right: 12px; border-radius: 8px;">
-            <h1>YT TOOLBOX</h1>
+            <h1 style="color:#f97316;">YT TOOLBOX</h1>
         </a>
     </nav>
 
@@ -123,130 +72,191 @@
         <a href="../../" class="back-btn">← Back to Dashboard</a>
         
         <div class="tool-panel">
-            <h2>YouTube Earnings Calculator</h2>
-            <p>Drag the slider to estimate how much money you can make from YouTube AdSense based on your daily views and channel niche.</p>
+            <h2>💰 Advanced Earnings Analyzer</h2>
+            <p style="color:var(--muted); margin-bottom:25px;">Find out exactly how much a Creator makes. Paste a Video Link, Channel Link, or just type a YouTube Channel Name!</p>
             
-            <div class="control-group">
-                <label>🔥 Daily Video Views</label>
-                <div class="slider-container">
-                    <input type="range" id="views-slider" min="1000" max="5000000" step="1000" value="50000" oninput="calculateEarnings()">
-                    <div class="view-display"><span id="views-text">50,000</span> Views</div>
-                </div>
-            </div>
+            <input type="text" id="search-input" placeholder="e.g., MrBeast, or paste Video/Channel Link...">
+            
+            <select id="niche-select">
+                <option value="5.50">Finance, Tech & Business (~ $5.50 RPM)</option>
+                <option value="2.50">Education, Review & Auto (~ $2.50 RPM)</option>
+                <option value="1.50" selected>Entertainment, Vlogs & Comedy (~ $1.50 RPM)</option>
+                <option value="0.80">Gaming & Reactions (~ $0.80 RPM)</option>
+                <option value="0.05">YouTube Shorts Channel (~ $0.05 RPM)</option>
+            </select>
 
-            <div class="control-group">
-                <label>🎯 Channel Niche / Category (RPM)</label>
-                <select id="niche-select" onchange="calculateEarnings()">
-                    <option value="5.50">Finance, Crypto & Investing ($5.50 RPM)</option>
-                    <option value="3.50">Technology, Gadgets & Software ($3.50 RPM)</option>
-                    <option value="2.00">Education & Tutorials ($2.00 RPM)</option>
-                    <option value="1.20" selected>Entertainment, Vlogs & Lifestyle ($1.20 RPM)</option>
-                    <option value="0.80">Gaming & Reactions ($0.80 RPM)</option>
-                    <option value="0.05">YouTube Shorts (Swipe Feed) ($0.05 RPM)</option>
-                </select>
-            </div>
+            <button class="action-btn" onclick="analyzeEarnings()">Calculate Revenue 💸</button>
+            <p id="loading-msg">⚡ BSR Engine Searching Database... Please wait.</p>
 
-            <div class="results-grid">
-                <div class="money-card">
-                    <div class="card-title">Daily Earnings</div>
-                    <div class="usd-value" id="daily-usd">$0.00</div>
-                    <div class="inr-value" id="daily-inr">₹0</div>
-                </div>
+            <div id="video-result">
+                <h3 style="color:#fbbf24; margin-bottom:15px;">Video Earnings Estimate</h3>
+                <img id="vr-thumb" class="vid-thumb" src="" alt="Thumbnail">
+                <div id="vr-title" class="vid-title">Video Title</div>
                 
-                <div class="money-card">
-                    <div class="card-title">Monthly Earnings</div>
-                    <div class="usd-value" id="monthly-usd">$0.00</div>
-                    <div class="inr-value" id="monthly-inr">₹0</div>
-                </div>
-
-                <div class="money-card" style="border-color: #f97316;">
-                    <div class="card-title" style="color: #f97316;">Yearly Earnings</div>
-                    <div class="usd-value" id="yearly-usd" style="color: white;">$0.00</div>
-                    <div class="inr-value" id="yearly-inr">₹0</div>
-                </div>
+                <div class="vid-earnings" id="vr-usd">$0.00</div>
+                <div style="color:#fbbf24; font-weight:bold; font-size:20px; margin-bottom:10px;" id="vr-inr">₹0</div>
+                
+                <div class="vid-views" id="vr-views">0 Total Views</div>
+                
+                <p style="color:white; margin-bottom:10px;">Created by: <span id="vr-channel-name" style="font-weight:bold; color:var(--primary);">Channel Name</span></p>
+                <button class="check-channel-btn" id="vr-channel-btn">Check Total Channel Earnings</button>
             </div>
-            
-            <p style="margin-top: 20px; font-size: 13px; color: var(--muted);">* Estimates are based on average RPM (Revenue Per Mille) and assuming an exchange rate of $1 = ₹83. Actual earnings may vary based on geography, ad-blockers, and watch time.</p>
+
+            <div id="channel-result">
+                <div class="channel-header">
+                    <img id="cr-logo" class="ch-logo" src="" alt="Channel Logo">
+                    <div class="ch-title" id="cr-name">Channel Name</div>
+                </div>
+
+                <div class="grid-earnings">
+                    <div class="earning-card">
+                        <h4>Daily Avg Earnings</h4>
+                        <div class="earning-usd" id="cr-daily-usd">$0</div>
+                        <div class="earning-inr" id="cr-daily-inr">₹0</div>
+                    </div>
+                    
+                    <div class="earning-card" style="border-color:var(--primary);">
+                        <h4 style="color:var(--primary);">Monthly Est. Earnings</h4>
+                        <div class="earning-usd" id="cr-monthly-usd">$0</div>
+                        <div class="earning-inr" id="cr-monthly-inr">₹0</div>
+                    </div>
+
+                    <div class="earning-card">
+                        <h4>Total Lifetime Earnings</h4>
+                        <div class="earning-usd" id="cr-total-usd">$0</div>
+                        <div class="earning-inr" id="cr-total-inr">₹0</div>
+                    </div>
+                </div>
+                <p style="margin-top: 20px; font-size: 12px; color: var(--muted);">* Monthly and Daily figures are averages based on the channel's total lifetime views and age. Actual current month earnings may vary.</p>
+            </div>
         </div>
-
-        <article class="seo-content">
-            <h2>How Does YouTube Calculate Earnings?</h2>
-            <p>One of the most frequently asked questions on the internet is, <em>"How much does YouTube pay for 1 million views?"</em> The truth is, there is no fixed number. YouTube does not pay creators purely based on view count. Instead, they pay based on <strong>Ad Impressions</strong>—how many times ads were shown during your videos. Our <strong>YT ToolBox Earnings Calculator</strong> simplifies this complex math to give you a highly accurate estimate.</p>
-            
-            <h3>Understanding CPM vs. RPM</h3>
-            <p>If you want to treat YouTube like a business, you need to understand the terminology. The two most important metrics for revenue are CPM and RPM:</p>
-            <ul>
-                <li><strong>CPM (Cost Per Mille):</strong> This is the amount of money <em>advertisers</em> pay YouTube for every 1,000 ad views on your video.</li>
-                <li><strong>RPM (Revenue Per Mille):</strong> This is the metric that matters to you. RPM is the amount of money <em>you actually keep</em> per 1,000 video views after YouTube takes its 45% cut. Our calculator uses average RPM values to give you realistic figures.</li>
-            </ul>
-
-            <h3>Why Do Different Niches Pay Differently?</h3>
-            <p>You might have noticed the dropdown menu in our tool offering different rates based on your channel's category. Advertisers bid higher for audiences that are more likely to spend money. For example:</p>
-            <ul>
-                <li><strong>Finance & Crypto (High RPM):</strong> Banks and trading apps pay massive amounts of money for ads because a single customer can bring them thousands of dollars in profit.</li>
-                <li><strong>Tech & Gadgets (Medium RPM):</strong> Tech audiences are prone to buying laptops, phones, and software.</li>
-                <li><strong>Gaming & Vlogs (Low RPM):</strong> The audience is generally younger, meaning they have less disposable income. Advertisers bid lower for these ad spots.</li>
-                <li><strong>YouTube Shorts:</strong> Because Shorts are 15-60 seconds long, ads are shown between videos in the feed, not directly on your video. The revenue is pooled and split, resulting in a significantly lower RPM.</li>
-            </ul>
-
-            <h3>How to Increase Your YouTube Revenue</h3>
-            <p>If you want to maximize the numbers you see in the calculator above, you need to optimize your content strategy. First, make videos longer than 8 minutes so you can place <strong>mid-roll ads</strong>. Second, use the <strong>YT ToolBox Tags Extractor</strong> to rank your videos in high-paying countries like the USA, UK, and Australia, where the RPM is naturally higher than in Asian countries.</p>
-        </article>
     </div>
 
     <footer>
-        <div class="footer-nav">
-            <a href="../../info/about/">About Us</a>
-            <a href="../../info/contact/">Contact Us</a>
-            <a href="../../info/privacy/">Privacy Policy</a>
-            <a href="../../info/terms/">Terms & Conditions</a>
-            <a href="../../info/disclaimer/">Disclaimer</a>
-            <a href="../../info/dmca/">DMCA Policy</a>
-        </div>
-        <p>© 2026 YT ToolBox. All rights reserved. Powered by BSR Studios.</p>
+        <p style="color: #475569;">© 2026 YT ToolBox. All rights reserved. Powered by BSR Studios.</p>
     </footer>
 
     <script>
-        const EXCHANGE_RATE = 83; // 1 USD to INR (Approximate)
+        const WORKER_URL = "https://yt-api-engine.aryanmewadastudios.workers.dev/";
+        const EX_RATE = 83; // 1 USD = 83 INR
 
-        function formatCurrency(amount, isUSD) {
-            if (isUSD) {
-                return "$" + amount.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-            } else {
-                return "₹" + Math.round(amount).toLocaleString('en-IN');
+        function formatMoney(amount, isUSD) {
+            if(isUSD) return "$" + amount.toLocaleString('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 0 });
+            return "₹" + amount.toLocaleString('en-IN', { minimumFractionDigits: 0, maximumFractionDigits: 0 });
+        }
+
+        async function analyzeEarnings() {
+            const input = document.getElementById('search-input').value.trim();
+            const rpm = parseFloat(document.getElementById('niche-select').value);
+            
+            if(!input) return alert("Please enter a Video Link, Channel Link, or Creator Name!");
+
+            const loading = document.getElementById('loading-msg');
+            const vidBox = document.getElementById('video-result');
+            const chanBox = document.getElementById('channel-result');
+
+            loading.style.display = 'block';
+            vidBox.style.display = 'none';
+            chanBox.style.display = 'none';
+
+            // 1. Check if input is a Video URL
+            const videoMatch = input.match(/(?:v=|\/|youtu\.be\/|shorts\/)([0-9A-Za-z_-]{11})/);
+            
+            // 2. Check if input is a specific Channel URL
+            const channelMatch = input.match(/channel\/([0-9A-Za-z_-]{24})/);
+
+            try {
+                if (videoMatch) {
+                    // --- VIDEO LOGIC ---
+                    const vidId = videoMatch[1];
+                    const res = await fetch(`${WORKER_URL}?id=${vidId}`);
+                    const data = await res.json();
+                    
+                    if(!data.items) throw new Error("Video not found");
+                    
+                    const snippet = data.items[0].snippet;
+                    const stats = data.items[0].statistics;
+                    const views = parseInt(stats.viewCount || 0);
+                    
+                    const usd = (views / 1000) * rpm;
+                    
+                    document.getElementById('vr-thumb').src = snippet.thumbnails.high.url;
+                    document.getElementById('vr-title').innerText = snippet.title;
+                    document.getElementById('vr-views').innerText = views.toLocaleString('en-IN') + " Total Views";
+                    document.getElementById('vr-usd').innerText = formatMoney(usd, true);
+                    document.getElementById('vr-inr').innerText = formatMoney(usd * EX_RATE, false);
+                    document.getElementById('vr-channel-name').innerText = snippet.channelTitle;
+
+                    // Button feature to check this video's channel
+                    document.getElementById('vr-channel-btn').onclick = () => {
+                        document.getElementById('search-input').value = snippet.channelTitle;
+                        analyzeEarnings(); // Re-run search with channel name!
+                    };
+
+                    vidBox.style.display = 'block';
+
+                } else {
+                    // --- CHANNEL LOGIC (Link or Search Name) ---
+                    let channelIdToFetch = "";
+
+                    if (channelMatch) {
+                        channelIdToFetch = channelMatch[1];
+                    } else {
+                        // User typed a name or @handle! Let's search via Worker
+                        loading.innerText = "⚡ Searching YouTube Database for Creator...";
+                        const searchRes = await fetch(`${WORKER_URL}?search=${encodeURIComponent(input)}`);
+                        const searchData = await searchRes.json();
+                        
+                        if(!searchData.items || searchData.items.length === 0) throw new Error("Creator not found");
+                        channelIdToFetch = searchData.items[0].snippet.channelId;
+                    }
+
+                    // Now get Channel Statistics
+                    loading.innerText = "⚡ Calculating Lifetime Earnings...";
+                    const chanRes = await fetch(`${WORKER_URL}?id=${channelIdToFetch}&endpoint=channel`);
+                    const chanData = await chanRes.json();
+
+                    const cSnippet = chanData.items[0].snippet;
+                    const cStats = chanData.items[0].statistics;
+
+                    const totalViews = parseInt(cStats.viewCount || 0);
+                    
+                    // Math: Average Monthly/Daily calculation based on Channel Age
+                    const creationDate = new Date(cSnippet.publishedAt);
+                    const today = new Date();
+                    const daysAlive = Math.max((today - creationDate) / (1000 * 60 * 60 * 24), 1);
+                    
+                    const avgDailyViews = totalViews / daysAlive;
+                    const avgMonthlyViews = avgDailyViews * 30;
+
+                    // Revenue Calculation
+                    const totalUSD = (totalViews / 1000) * rpm;
+                    const monthlyUSD = (avgMonthlyViews / 1000) * rpm;
+                    const dailyUSD = (avgDailyViews / 1000) * rpm;
+
+                    // Update UI
+                    document.getElementById('cr-logo').src = cSnippet.thumbnails.high.url;
+                    document.getElementById('cr-name').innerText = cSnippet.title;
+
+                    document.getElementById('cr-total-usd').innerText = formatMoney(totalUSD, true);
+                    document.getElementById('cr-total-inr').innerText = formatMoney(totalUSD * EX_RATE, false);
+
+                    document.getElementById('cr-monthly-usd').innerText = formatMoney(monthlyUSD, true);
+                    document.getElementById('cr-monthly-inr').innerText = formatMoney(monthlyUSD * EX_RATE, false);
+
+                    document.getElementById('cr-daily-usd').innerText = formatMoney(dailyUSD, true);
+                    document.getElementById('cr-daily-inr').innerText = formatMoney(dailyUSD * EX_RATE, false);
+
+                    chanBox.style.display = 'block';
+                }
+
+            } catch (error) {
+                alert("❌ Error: Could not find data. Check the link or name.");
+            } finally {
+                loading.style.display = 'none';
+                loading.innerText = "⚡ BSR Engine Searching Database... Please wait."; // Reset text
             }
         }
-
-        function calculateEarnings() {
-            // Get inputs
-            const viewsPerDay = parseInt(document.getElementById('views-slider').value);
-            const rpm = parseFloat(document.getElementById('niche-select').value);
-
-            // Update View text
-            document.getElementById('views-text').innerText = viewsPerDay.toLocaleString('en-IN');
-
-            // Math Logic
-            const dailyUSD = (viewsPerDay / 1000) * rpm;
-            const monthlyUSD = dailyUSD * 30;
-            const yearlyUSD = monthlyUSD * 12;
-
-            const dailyINR = dailyUSD * EXCHANGE_RATE;
-            const monthlyINR = monthlyUSD * EXCHANGE_RATE;
-            const yearlyINR = yearlyUSD * EXCHANGE_RATE;
-
-            // Update UI
-            document.getElementById('daily-usd').innerText = formatCurrency(dailyUSD, true);
-            document.getElementById('daily-inr').innerText = formatCurrency(dailyINR, false);
-            
-            document.getElementById('monthly-usd').innerText = formatCurrency(monthlyUSD, true);
-            document.getElementById('monthly-inr').innerText = formatCurrency(monthlyINR, false);
-            
-            document.getElementById('yearly-usd').innerText = formatCurrency(yearlyUSD, true);
-            document.getElementById('yearly-inr').innerText = formatCurrency(yearlyINR, false);
-        }
-
-        // Run once on load to show initial values
-        window.onload = calculateEarnings;
     </script>
 </body>
 </html>
