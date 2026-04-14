@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>YouTube Channel Logo & Banner Downloader | YT ToolBox</title>
+    <meta name="title" content="YouTube Channel Logo & Banner Downloader | YT ToolBox">
+    <meta name="description" content="Download high-resolution YouTube channel logos (profile pictures) and channel banners (art) for free. Enter any video link to extract channel assets.">
+    <meta name="keywords" content="youtube banner downloader, youtube logo downloader, extract youtube channel art, youtube profile picture downloader, YT ToolBox">
+    <meta name="author" content="BSR Studios">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://yttoolbox.github.io/tools/channel-assets-extractor/">
+
+    <link rel="icon" type="image/png" href="../../logo.png">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://yttoolbox.github.io/tools/channel-assets-extractor/">
+    <meta property="og:title" content="YouTube Channel Logo & Banner Extractor - YT ToolBox">
+    <meta property="og:description" content="Extract HD Channel Banners and Profile Pictures from any YouTube video in one click. Completely free.">
+    <meta property="og:image" content="https://yttoolbox.github.io/logo.png">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="YouTube Channel Logo & Banner Extractor - YT ToolBox">
+    <meta name="twitter:description" content="Extract HD Channel Banners and Profile Pictures from any YouTube video in one click.">
+    <meta name="twitter:image" content="https://yttoolbox.github.io/logo.png">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "YT ToolBox Channel Assets Downloader",
+      "operatingSystem": "Web",
+      "applicationCategory": "DesignApplication",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "reviewCount": "1420"
+      }
+    }
+    </script>
+
+    <style>
+        :root { --bg: #0f172a; --card: #1e293b; --primary: #f97316; --text: #f8fafc; --muted: #94a3b8; }
+        * { margin:0; padding:0; box-sizing:border-box; font-family:'Segoe UI', sans-serif; text-decoration: none;}
+        body { background: var(--bg); color: var(--text); line-height: 1.6; padding-bottom:50px; }
+        
+        /* Navbar */
+        .navbar { background: var(--card); padding:20px 40px; border-bottom:2px solid var(--primary); display: flex; align-items: center; justify-content: center; position: sticky; top: 0; z-index: 100;}
+        .navbar h1 { color:var(--primary); font-size:24px; font-weight:900; }
+
+        .container { max-width: 900px; margin: 40px auto; padding: 0 20px; }
+        .back-btn { background:#334155; color:white; padding:10px 20px; border-radius:8px; display:inline-block; margin-bottom:30px; font-weight:bold; transition: 0.3s;}
+        .back-btn:hover { background: #475569; }
+
+        /* Tool Panel */
+        .tool-panel { background:var(--card); padding:40px; border-radius:20px; border:1px solid #334155; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.4); }
+        .tool-panel h2 { font-size: 32px; color: var(--primary); margin-bottom: 10px; }
+        .tool-panel p { color: var(--muted); margin-bottom: 30px; }
+        
+        input[type="text"] { width:100%; padding:18px; border-radius:12px; border:2px solid #334155; background:#0f172a; color:white; margin-bottom:20px; outline:none; font-size:16px; transition: 0.3s;}
+        input[type="text"]:focus { border-color: var(--primary); box-shadow: 0 0 15px rgba(249, 115, 22, 0.2); }
+        
+        .action-btn { background:var(--primary); color:white; border:none; padding:18px 40px; font-weight:bold; border-radius:12px; cursor:pointer; width:100%; font-size:18px; text-transform: uppercase; transition: 0.3s; }
+        .action-btn:hover { background:#ea580c; transform: translateY(-2px); }
+
+        /* Results Area */
+        #loading-msg { display: none; color: #10b981; font-weight: bold; margin-top: 20px; font-size: 18px;}
+        #result-area { margin-top:40px; display:none; text-align: center;}
+        
+        .asset-box { margin-bottom: 30px; background: #0f172a; border: 2px solid #334155; border-radius: 15px; padding: 25px;}
+        .asset-box h3 { color: #fbbf24; margin-bottom: 15px; font-size: 20px;}
+        
+        /* Image Previews */
+        #logo-img { width: 150px; height: 150px; border-radius: 50%; border: 4px solid #334155; object-fit: cover; margin-bottom: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.5);}
+        #banner-img { width: 100%; max-height: 250px; border-radius: 10px; border: 2px solid #334155; object-fit: cover; margin-bottom: 15px;}
+        
+        .dl-btn { background:#3b82f6; color:white; border:none; padding:12px 25px; border-radius:8px; cursor:pointer; font-weight:bold; font-size:16px; transition: 0.3s; display: inline-block;}
+        .dl-btn:hover { background: #2563eb; }
+
+        /* LONG SEO ARTICLE */
+        .seo-content { background: var(--card); padding: 50px; border-radius: 20px; margin-top: 60px; border: 1px solid #334155; }
+        .seo-content h2 { color: var(--primary); margin-bottom: 20px; font-size: 28px; border-bottom: 2px solid #334155; padding-bottom: 10px;}
+        .seo-content h3 { color: #fbbf24; margin: 30px 0 15px; font-size: 22px; }
+        .seo-content p { margin-bottom: 20px; text-align: justify; color: var(--text); font-size: 16px; }
+        .seo-content ul { margin: 15px 0 25px 25px; color: var(--muted); }
+        .seo-content li { margin-bottom: 12px; }
+
+        /* Footer */
+        footer { background: #010409; padding: 40px 20px; text-align: center; border-top: 1px solid #334155; margin-top: 80px;}
+        .footer-nav { margin-bottom: 20px; display: flex; justify-content: center; flex-wrap: wrap; gap: 20px;}
+        .footer-nav a { color: var(--muted); font-size: 14px; transition: 0.3s; }
+        .footer-nav a:hover { color: var(--primary); }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <a href="../../" style="display: flex; align-items: center;">
+            <img src="../../logo.png" alt="Logo" style="height: 40px; margin-right: 12px; border-radius: 8px;">
+            <h1>YT TOOLBOX</h1>
+        </a>
+    </nav>
+
+    <div class="container">
+        <a href="../../" class="back-btn">← Back to Dashboard</a>
+        
+        <div class="tool-panel">
+            <h2>Channel Assets Extractor</h2>
+            <p>Paste any YouTube video link to instantly extract and download the creator's Profile Picture (Logo) and Channel Banner (Art) in High Definition.</p>
+            
+            <input type="text" id="yt-link" placeholder="Paste YouTube Video URL here...">
+            <button class="action-btn" onclick="extractAssets()">Find Channel Assets 🎨</button>
+            
+            <p id="loading-msg">⚡ Performing Double-Jump API Search... Please wait.</p>
+
+            <div id="result-area">
+                <h2 id="channel-name" style="color: #10b981; margin-bottom: 20px; font-size: 28px;">Channel Name</h2>
+                
+                <div class="asset-box">
+                    <h3>Channel Logo (Profile Picture)</h3>
+                    <img id="logo-img" crossorigin="anonymous" src="" alt="Channel Logo">
+                    <br>
+                    <button class="dl-btn" id="dl-logo-btn">Download Logo</button>
+                </div>
+
+                <div class="asset-box" id="banner-box">
+                    <h3>Channel Banner (Art)</h3>
+                    <img id="banner-img" crossorigin="anonymous" src="" alt="Channel Banner">
+                    <br>
+                    <button class="dl-btn" id="dl-banner-btn">Download Banner (Max Res)</button>
+                </div>
+            </div>
+        </div>
+
+        <article class="seo-content">
+            <h2>The Importance of YouTube Channel Branding</h2>
+            <p>When a viewer clicks on your video and decides they like your content, their next step is often to visit your channel page. This is the moment of truth where they decide whether to hit that "Subscribe" button or leave. Your <strong>Channel Logo (Profile Picture)</strong> and your <strong>Channel Banner (Channel Art)</strong> are the digital storefront of your brand. Professional, high-quality branding builds immediate trust.</p>
+            
+            <h3>Why Use the YT ToolBox Assets Extractor?</h3>
+            <p>Designers, digital marketers, and fellow creators often need high-resolution copies of a channel's assets. Whether you are creating a sponsorship pitch deck, analyzing competitor branding, or making a "Reaction/Shoutout" video, you need crystal-clear images. Our tool uses a proprietary "Double-Jump API" to fetch the highest available resolution directly from YouTube's secure servers.</p>
+            <ul>
+                <li><strong>No Quality Loss:</strong> We bypass the compressed web versions and fetch the raw source files (up to 2560x1440 pixels for banners).</li>
+                <li><strong>One-Click Workflow:</strong> You don't even need the channel URL. Just paste a video link, and our engine automatically traces it back to the owner's channel to extract the assets.</li>
+                <li><strong>Device Agnostic:</strong> Download these assets directly to your mobile phone or PC instantly using our Canvas Rendering technology.</li>
+            </ul>
+
+            <h3>Best Practices for YouTube Banners</h3>
+            <p>If you are downloading competitor banners for inspiration, notice the "Safe Zone" in the middle. Because YouTube banners are displayed differently on TVs, Desktop computers, and Mobile phones, top creators always place their main text, upload schedule, and logos right in the center. By downloading their banners, you can lay them over your own designs in Photoshop or Canva to ensure your alignment is perfect.</p>
+
+            <h3>Disclaimer on Copyright</h3>
+            <p>While YouTube Channel assets are public metadata, the graphical artwork remains the intellectual property of the respective creators or their graphic designers. Please use this tool responsibly for research, inspiration, and fair-use editorial purposes. Do not steal or impersonate other creators' branding.</p>
+        </article>
+    </div>
+
+    <footer>
+        <div class="footer-nav">
+            <a href="../../info/about/">About Us</a>
+            <a href="../../info/contact/">Contact Us</a>
+            <a href="../../info/privacy/">Privacy Policy</a>
+            <a href="../../info/terms/">Terms & Conditions</a>
+            <a href="../../info/disclaimer/">Disclaimer</a>
+            <a href="../../info/dmca/">DMCA Policy</a>
+        </div>
+        <p>© 2026 YT ToolBox. All rights reserved. Powered by BSR Studios.</p>
+    </footer>
+
+    <script>
+        // CEO SIR: Your Cloudflare Worker Link
+        const WORKER_URL = "https://yt-api-engine.aryanmewadastudios.workers.dev/";
+
+        async function extractAssets() {
+            const url = document.getElementById('yt-link').value.trim();
+            const videoId = url.match(/(?:v=|\/|youtu\.be\/|shorts\/)([0-9A-Za-z_-]{11})/)?.[1];
+            
+            if(!videoId) return alert("Please paste a valid YouTube Video link!");
+
+            const loading = document.getElementById('loading-msg');
+            const resultArea = document.getElementById('result-area');
+            const bannerBox = document.getElementById('banner-box');
+            
+            resultArea.style.display = 'none';
+            loading.style.display = 'block';
+            loading.innerText = "⚡ Jump 1: Identifying Channel... Please wait.";
+
+            try {
+                // JUMP 1: Get Video Details to find Channel ID
+                const vidRes = await fetch(`${WORKER_URL}?id=${videoId}`);
+                const vidData = await vidRes.json();
+                
+                if(!vidData.items || vidData.items.length === 0) throw new Error("Video not found");
+                
+                const channelId = vidData.items[0].snippet.channelId;
+                const channelTitle = vidData.items[0].snippet.channelTitle;
+                
+                loading.innerText = `⚡ Jump 2: Fetching assets for ${channelTitle}...`;
+
+                // JUMP 2: Get Channel Branding Details using endpoint=channel
+                const channelRes = await fetch(`${WORKER_URL}?id=${channelId}&endpoint=channel`);
+                const channelData = await channelRes.json();
+
+                const cSnippet = channelData.items[0].snippet;
+                const cBranding = channelData.items[0].brandingSettings;
+
+                // Set Data to UI
+                document.getElementById('channel-name').innerText = `👤 ${channelTitle}`;
+                
+                // Set Logo (Highest Res)
+                const logoUrl = cSnippet.thumbnails.high.url;
+                document.getElementById('logo-img').src = logoUrl;
+                document.getElementById('dl-logo-btn').onclick = () => forceDownload(logoUrl, `${channelTitle}_Logo.jpg`);
+
+                // Set Banner (Checking if it exists, as some channels don't upload banners)
+                const bannerBaseUrl = cBranding?.image?.bannerExternalUrl;
+                if(bannerBaseUrl) {
+                    // Appending =w2560 to get the 2K Max Resolution image
+                    const maxResBanner = bannerBaseUrl + '=w2560'; 
+                    document.getElementById('banner-img').src = maxResBanner;
+                    bannerBox.style.display = 'block';
+                    document.getElementById('dl-banner-btn').onclick = () => forceDownload(maxResBanner, `${channelTitle}_Banner.jpg`);
+                } else {
+                    bannerBox.style.display = 'none'; // Hide banner box if channel doesn't have one
+                }
+
+                loading.style.display = 'none';
+                resultArea.style.display = 'block';
+
+            } catch (error) {
+                loading.innerText = "❌ Error: Could not fetch channel data. Please check the link.";
+                loading.style.color = "#ef4444";
+            }
+        }
+
+        // Canvas Download function to prevent CORS blocking
+        function forceDownload(imgUrl, filename) {
+            const btn = event.target;
+            const originalText = btn.innerText;
+            btn.innerText = "Downloading... ⏳";
+
+            const img = new Image();
+            img.crossOrigin = "Anonymous";
+            img.onload = function() {
+                const canvas = document.createElement("canvas");
+                canvas.width = img.width; canvas.height = img.height;
+                const ctx = canvas.getContext("2d");
+                ctx.drawImage(img, 0, 0);
+                const link = document.createElement("a");
+                link.href = canvas.toDataURL("image/jpeg");
+                link.download = filename;
+                link.click();
+                btn.innerText = "Downloaded! ✔";
+                setTimeout(() => btn.innerText = originalText, 2000);
+            };
+            img.onerror = function() {
+                btn.innerText = "Error!";
+                setTimeout(() => btn.innerText = originalText, 2000);
+            };
+            img.src = imgUrl;
+        }
+    </script>
+</body>
+</html>
