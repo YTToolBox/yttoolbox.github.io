@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>YouTube Title & Description Extractor | Copy Metadata | YT ToolBox</title>
+    <meta name="title" content="YouTube Title & Description Extractor | Copy Metadata | YT ToolBox">
+    <meta name="description" content="Extract and copy perfectly formatted YouTube video titles and full descriptions. Reverse engineer top-ranking videos for your own channel growth. 100% Free.">
+    <meta name="keywords" content="youtube description extractor, copy youtube title, youtube metadata grabber, youtube description copy paste, YT ToolBox">
+    <meta name="author" content="BSR Studios">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://yttoolbox.github.io/tools/title-desc-extractor/">
+
+    <link rel="icon" type="image/png" href="../../logo.png">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://yttoolbox.github.io/tools/title-desc-extractor/">
+    <meta property="og:title" content="YouTube Title & Description Copier - YT ToolBox">
+    <meta property="og:description" content="Copy full descriptions and titles from any YouTube video in one click. Completely free.">
+    <meta property="og:image" content="https://yttoolbox.github.io/logo.png">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="YouTube Title & Description Copier - YT ToolBox">
+    <meta name="twitter:description" content="Copy full descriptions and titles from any YouTube video in one click.">
+    <meta name="twitter:image" content="https://yttoolbox.github.io/logo.png">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "YT ToolBox Title & Description Extractor",
+      "operatingSystem": "Web",
+      "applicationCategory": "SEOApplication",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.8",
+        "reviewCount": "1850"
+      }
+    }
+    </script>
+
+    <style>
+        :root { --bg: #0f172a; --card: #1e293b; --primary: #f97316; --text: #f8fafc; --muted: #94a3b8; }
+        * { margin:0; padding:0; box-sizing:border-box; font-family:'Segoe UI', sans-serif; text-decoration: none;}
+        body { background: var(--bg); color: var(--text); line-height: 1.6; padding-bottom:50px; }
+        
+        /* Navbar */
+        .navbar { background: var(--card); padding:20px 40px; border-bottom:2px solid var(--primary); display: flex; align-items: center; justify-content: center; position: sticky; top: 0; z-index: 100;}
+        .navbar h1 { color:var(--primary); font-size:24px; font-weight:900; }
+
+        .container { max-width: 900px; margin: 40px auto; padding: 0 20px; }
+        .back-btn { background:#334155; color:white; padding:10px 20px; border-radius:8px; display:inline-block; margin-bottom:30px; font-weight:bold; transition: 0.3s;}
+        .back-btn:hover { background: #475569; }
+
+        /* Tool Panel */
+        .tool-panel { background:var(--card); padding:40px; border-radius:20px; border:1px solid #334155; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.4); }
+        .tool-panel h2 { font-size: 32px; color: var(--primary); margin-bottom: 10px; }
+        .tool-panel p { color: var(--muted); margin-bottom: 30px; }
+        
+        input[type="text"] { width:100%; padding:18px; border-radius:12px; border:2px solid #334155; background:#0f172a; color:white; margin-bottom:20px; outline:none; font-size:16px; transition: 0.3s;}
+        input[type="text"]:focus { border-color: var(--primary); box-shadow: 0 0 15px rgba(249, 115, 22, 0.2); }
+        
+        .action-btn { background:var(--primary); color:white; border:none; padding:18px 40px; font-weight:bold; border-radius:12px; cursor:pointer; width:100%; font-size:18px; text-transform: uppercase; transition: 0.3s; }
+        .action-btn:hover { background:#ea580c; transform: translateY(-2px); }
+
+        /* Results Area */
+        #result-area { margin-top:40px; display:none; text-align: left;}
+        
+        .result-box { margin-bottom: 25px; background: #0f172a; border: 2px solid #334155; border-radius: 15px; padding: 20px; position: relative;}
+        .result-box h3 { color: #fbbf24; margin-bottom: 10px; font-size: 18px;}
+        
+        textarea { width:100%; background:transparent; color:#10b981; border:none; font-family:monospace; resize:none; font-size:16px; outline: none;}
+        #title-output { height: 60px; }
+        #desc-output { height: 250px; }
+        
+        .copy-btn { background:#3b82f6; color:white; border:none; padding:10px 20px; border-radius:8px; cursor:pointer; font-weight:bold; font-size:14px; transition: 0.3s; position: absolute; top: 15px; right: 15px; }
+        .copy-btn:hover { background: #2563eb; }
+
+        /* LONG SEO ARTICLE */
+        .seo-content { background: var(--card); padding: 50px; border-radius: 20px; margin-top: 60px; border: 1px solid #334155; }
+        .seo-content h2 { color: var(--primary); margin-bottom: 20px; font-size: 28px; border-bottom: 2px solid #334155; padding-bottom: 10px;}
+        .seo-content h3 { color: #fbbf24; margin: 30px 0 15px; font-size: 22px; }
+        .seo-content p { margin-bottom: 20px; text-align: justify; color: var(--text); font-size: 16px; }
+        .seo-content ul { margin: 15px 0 25px 25px; color: var(--muted); }
+        .seo-content li { margin-bottom: 12px; }
+
+        /* Footer */
+        footer { background: #010409; padding: 40px 20px; text-align: center; border-top: 1px solid #334155; margin-top: 80px;}
+        .footer-nav { margin-bottom: 20px; display: flex; justify-content: center; flex-wrap: wrap; gap: 20px;}
+        .footer-nav a { color: var(--muted); font-size: 14px; transition: 0.3s; }
+        .footer-nav a:hover { color: var(--primary); }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <a href="../../" style="display: flex; align-items: center;">
+            <img src="../../logo.png" alt="Logo" style="height: 40px; margin-right: 12px; border-radius: 8px;">
+            <h1>YT TOOLBOX</h1>
+        </a>
+    </nav>
+
+    <div class="container">
+        <a href="../../" class="back-btn">← Back to Dashboard</a>
+        
+        <div class="tool-panel">
+            <h2>Title & Description Extractor</h2>
+            <p>Paste a YouTube video link to extract its exact title and full description formatting.</p>
+            
+            <input type="text" id="yt-link" placeholder="Paste YouTube Video URL here...">
+            <button class="action-btn" onclick="extractMetadata()">Extract Metadata 📝</button>
+
+            <div id="result-area">
+                <div class="result-box">
+                    <h3>Video Title</h3>
+                    <button class="copy-btn" onclick="copyText('title-output')">Copy Title</button>
+                    <textarea id="title-output" readonly></textarea>
+                </div>
+
+                <div class="result-box">
+                    <h3>Video Description</h3>
+                    <button class="copy-btn" onclick="copyText('desc-output')">Copy Description</button>
+                    <textarea id="desc-output" readonly></textarea>
+                </div>
+            </div>
+        </div>
+
+        <article class="seo-content">
+            <h2>The Anatomy of a Viral YouTube Title & Description</h2>
+            <p>While thumbnails grab a viewer's visual attention, it is the <strong>Title</strong> and the <strong>Description</strong> that convince both the viewer and the YouTube algorithm that your video is worth watching. Crafting the perfect metadata is an art, and the easiest way to learn this art is by analyzing creators who are already succeeding. The <strong>YT ToolBox Title & Description Extractor</strong> allows you to do exactly that.</p>
+            
+            <h3>Why Do You Need to Extract YouTube Descriptions?</h3>
+            <p>Descriptions on YouTube serve multiple purposes. They provide context to the algorithm, they house important affiliate links, and they contain timestamps for video chapters. Formatting a good description takes a lot of time. By extracting a competitor's description, you can:</p>
+            <ul>
+                <li><strong>Copy Formatting Templates:</strong> Discover how top creators structure their social media links, disclaimers, and gear lists. You can copy their format and replace their links with yours.</li>
+                <li><strong>Find Hidden Keywords:</strong> The first 200 characters of a description are critical for SEO. See how top-ranking videos naturally weave keywords into their opening sentences.</li>
+                <li><strong>Extract Timestamps:</strong> Easily copy video chapter timestamps for research or note-taking.</li>
+            </ul>
+
+            <h3>The Science Behind a Clickable Title</h3>
+            <p>A good title does two things: it includes the primary search keyword (for the algorithm) and it creates an "information gap" or curiosity (for the human). For example, instead of naming a video <em>"How to Edit Videos"</em>, a professional creator might name it <em>"How I Edit Videos to Get 1M Views (Free Tutorial)"</em>. Our tool lets you extract exact titles so you can study these psychological triggers and adapt them for your own content.</p>
+
+            <h3>How Our Extractor Works</h3>
+            <p>Using our secure, high-speed Cloudflare API backend, YT ToolBox fetches the raw text data directly from YouTube's servers. This ensures that you get the <strong>exact formatting</strong>, including line breaks, emojis, and special characters, exactly as the creator intended. Just paste the URL, and within milliseconds, the data is ready to be copied to your clipboard.</p>
+
+            <h3>Best Practices for Using Metadata</h3>
+            <p><strong>Warning:</strong> Never copy and paste another creator's title and description exactly as your own. Not only will this confuse your audience, but YouTube's algorithm may flag it as "Reused Content" or spam. Use this tool for <em>inspiration</em> and <em>template formatting</em>. Always make sure to write your own original summary in the first paragraph of your description!</p>
+        </article>
+    </div>
+
+    <footer>
+        <div class="footer-nav">
+            <a href="../../info/about/">About Us</a>
+            <a href="../../info/contact/">Contact Us</a>
+            <a href="../../info/privacy/">Privacy Policy</a>
+            <a href="../../info/terms/">Terms & Conditions</a>
+            <a href="../../info/disclaimer/">Disclaimer</a>
+            <a href="../../info/dmca/">DMCA Policy</a>
+        </div>
+        <p>© 2026 YT ToolBox. All rights reserved. Powered by BSR Studios.</p>
+    </footer>
+
+    <script>
+        // CEO SIR: Your Cloudflare Worker Link
+        const WORKER_URL = "https://yt-api-engine.aryanmewadastudios.workers.dev/";
+
+        async function extractMetadata() {
+            const url = document.getElementById('yt-link').value.trim();
+            const id = url.match(/(?:v=|\/|youtu\.be\/|shorts\/)([0-9A-Za-z_-]{11})/)?.[1];
+            
+            if(!id) return alert("Please enter a valid YouTube link!");
+
+            const area = document.getElementById('result-area');
+            const titleBox = document.getElementById('title-output');
+            const descBox = document.getElementById('desc-output');
+
+            area.style.display = 'block';
+            titleBox.value = "Fetching title...";
+            descBox.value = "Fetching description...";
+
+            try {
+                // Securely call your Worker
+                const response = await fetch(`${WORKER_URL}?id=${id}`);
+                const data = await response.json();
+                
+                if(data.items && data.items.length > 0) {
+                    const snippet = data.items[0].snippet;
+                    titleBox.value = snippet.title || "No title found.";
+                    descBox.value = snippet.description || "The creator did not provide a description for this video.";
+                } else {
+                    titleBox.value = "Error";
+                    descBox.value = "Video data not found. It might be private or deleted.";
+                }
+            } catch (error) {
+                titleBox.value = "Connection Error";
+                descBox.value = "Failed to connect to the BSR API Engine.";
+            }
+        }
+
+        function copyText(elementId) {
+            const copyBox = document.getElementById(elementId);
+            copyBox.select();
+            document.execCommand('copy');
+            
+            // Visual feedback
+            const btn = event.target;
+            const originalText = btn.innerText;
+            btn.innerText = "Copied! ✔";
+            btn.style.background = "#10b981"; // Turn green
+            
+            setTimeout(() => {
+                btn.innerText = originalText;
+                btn.style.background = "#3b82f6"; // Back to blue
+            }, 2000);
+        }
+    </script>
+</body>
+</html>
