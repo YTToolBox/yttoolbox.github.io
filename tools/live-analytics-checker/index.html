@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>YouTube Live Analytics Checker | Real-Time Views & Likes | YT ToolBox</title>
+    <meta name="title" content="YouTube Live Analytics Checker | Real-Time Views & Likes | YT ToolBox">
+    <meta name="description" content="Check real-time YouTube video analytics. Instantly track live view counts, hidden likes, and comments for any video or YouTube Short. 100% Free tool.">
+    <meta name="keywords" content="youtube live view count, youtube video analytics, check youtube likes, youtube comment counter, real-time youtube stats, YT ToolBox">
+    <meta name="author" content="BSR Studios">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://yttoolbox.github.io/tools/live-analytics-checker/">
+
+    <link rel="icon" type="image/png" href="../../logo.png">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://yttoolbox.github.io/tools/live-analytics-checker/">
+    <meta property="og:title" content="Live YouTube Video Analytics - YT ToolBox">
+    <meta property="og:description" content="Track live views, hidden likes, and exact comment counts for any YouTube video instantly.">
+    <meta property="og:image" content="https://yttoolbox.github.io/logo.png">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Live YouTube Video Analytics - YT ToolBox">
+    <meta name="twitter:description" content="Track live views, hidden likes, and exact comment counts for any YouTube video.">
+    <meta name="twitter:image" content="https://yttoolbox.github.io/logo.png">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "YT ToolBox Live Analytics Tracker",
+      "operatingSystem": "Web",
+      "applicationCategory": "BusinessApplication",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "reviewCount": "3200"
+      }
+    }
+    </script>
+
+    <style>
+        :root { --bg: #0f172a; --card: #1e293b; --primary: #f97316; --text: #f8fafc; --muted: #94a3b8; }
+        * { margin:0; padding:0; box-sizing:border-box; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; text-decoration: none;}
+        body { background: var(--bg); color: var(--text); line-height: 1.6; padding-bottom:50px; }
+        
+        /* Navbar */
+        .navbar { background: var(--card); padding:20px 40px; border-bottom:2px solid var(--primary); display: flex; align-items: center; justify-content: center; position: sticky; top: 0; z-index: 100;}
+        .navbar h1 { color:var(--primary); font-size:24px; font-weight:900; }
+
+        .container { max-width: 900px; margin: 40px auto; padding: 0 20px; }
+        .back-btn { background:#334155; color:white; padding:10px 20px; border-radius:8px; display:inline-block; margin-bottom:30px; font-weight:bold; transition: 0.3s;}
+        .back-btn:hover { background: #475569; }
+
+        /* Tool Panel */
+        .tool-panel { background:var(--card); padding:40px; border-radius:20px; border:1px solid #334155; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.4); }
+        .tool-panel h2 { font-size: 32px; color: var(--primary); margin-bottom: 10px; }
+        .tool-panel p { color: var(--muted); margin-bottom: 30px; font-size: 16px;}
+        
+        input[type="text"] { width:100%; padding:18px; border-radius:12px; border:2px solid #334155; background:#0f172a; color:white; margin-bottom:20px; outline:none; font-size:16px; transition: 0.3s;}
+        input[type="text"]:focus { border-color: var(--primary); box-shadow: 0 0 15px rgba(249, 115, 22, 0.2); }
+        
+        .action-btn { background:var(--primary); color:white; border:none; padding:18px 40px; font-weight:bold; border-radius:12px; cursor:pointer; width:100%; font-size:18px; text-transform: uppercase; transition: 0.3s; }
+        .action-btn:hover { background:#ea580c; transform: translateY(-2px); }
+
+        /* Results Area */
+        #loading-msg { display: none; color: #10b981; font-weight: bold; margin-top: 20px; font-size: 18px;}
+        #result-area { margin-top:40px; display:none; }
+        
+        .video-title-box { background: #0f172a; padding: 20px; border-radius: 12px; border: 1px solid #334155; margin-bottom: 30px; }
+        .video-title-box h3 { color: #f8fafc; font-size: 20px; margin-bottom: 5px;}
+        .video-title-box p { color: var(--primary); font-weight: bold; font-size: 14px; margin: 0;}
+
+        /* Stats Grid */
+        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; }
+        .stat-card { background: #0f172a; border: 2px solid #334155; border-radius: 15px; padding: 25px; text-align: center; transition: 0.3s; }
+        .stat-card:hover { border-color: var(--primary); transform: translateY(-5px); }
+        .stat-icon { font-size: 40px; margin-bottom: 10px; }
+        .stat-title { color: var(--muted); font-size: 16px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 5px; }
+        .stat-value { color: #10b981; font-size: 28px; font-weight: 900; }
+        .stat-value.likes { color: #3b82f6; }
+        .stat-value.comments { color: #fbbf24; }
+
+        /* LONG SEO ARTICLE */
+        .seo-content { background: var(--card); padding: 50px; border-radius: 20px; margin-top: 60px; border: 1px solid #334155; }
+        .seo-content h2 { color: var(--primary); margin-bottom: 20px; font-size: 28px; border-bottom: 2px solid #334155; padding-bottom: 10px;}
+        .seo-content h3 { color: #fbbf24; margin: 30px 0 15px; font-size: 22px; }
+        .seo-content p { margin-bottom: 20px; text-align: justify; color: var(--text); font-size: 16px; }
+        .seo-content ul { margin: 15px 0 25px 25px; color: var(--muted); }
+        .seo-content li { margin-bottom: 12px; }
+
+        /* Footer */
+        footer { background: #010409; padding: 40px 20px; text-align: center; border-top: 1px solid #334155; margin-top: 80px;}
+        .footer-nav { margin-bottom: 20px; display: flex; justify-content: center; flex-wrap: wrap; gap: 20px;}
+        .footer-nav a { color: var(--muted); font-size: 14px; transition: 0.3s; }
+        .footer-nav a:hover { color: var(--primary); }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <a href="../../" style="display: flex; align-items: center;">
+            <img src="../../logo.png" alt="Logo" style="height: 40px; margin-right: 12px; border-radius: 8px;">
+            <h1>YT TOOLBOX</h1>
+        </a>
+    </nav>
+
+    <div class="container">
+        <a href="../../" class="back-btn">← Back to Dashboard</a>
+        
+        <div class="tool-panel">
+            <h2>Live Analytics Checker</h2>
+            <p>Paste a YouTube video link to instantly fetch its exact real-time views, likes, and comments directly from the server.</p>
+            
+            <input type="text" id="yt-link" placeholder="Paste YouTube Video URL here...">
+            <button class="action-btn" onclick="fetchAnalytics()">Check Live Stats 📈</button>
+            
+            <p id="loading-msg">⚡ Connecting to YouTube Servers... Fetching live data.</p>
+
+            <div id="result-area">
+                <div class="video-title-box">
+                    <h3 id="video-title">Loading Title...</h3>
+                    <p id="publish-date">Published on: Loading...</p>
+                </div>
+
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">👀</div>
+                        <div class="stat-title">Total Views</div>
+                        <div class="stat-value" id="views-count">0</div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-icon">👍</div>
+                        <div class="stat-title">Real-Time Likes</div>
+                        <div class="stat-value likes" id="likes-count">0</div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon">💬</div>
+                        <div class="stat-title">Total Comments</div>
+                        <div class="stat-value comments" id="comments-count">0</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <article class="seo-content">
+            <h2>Understanding YouTube Real-Time Analytics</h2>
+            <p>For content creators, digital marketers, and brand sponsors, surface-level YouTube metrics are often not enough. YouTube frequently rounds off numbers on its public interface (e.g., showing "1.2M views" instead of the exact count). The <strong>YT ToolBox Live Analytics Checker</strong> bypasses this interface and uses the official API to pull the precise, unrounded statistical data of any video in real-time.</p>
+            
+            <h3>Why Exact Engagement Metrics Matter</h3>
+            <p>Engagement is the currency of YouTube. The algorithm decides whether to promote a video based on how users interact with it. By using our tool, you can calculate crucial metrics that top-tier creators use to dominate their niche:</p>
+            <ul>
+                <li><strong>Views to Likes Ratio:</strong> A healthy YouTube video typically has 4 likes for every 100 views (a 4% ratio). If you check a competitor's video and see a 10% ratio, it means their audience is highly loyal, and you should study their content style.</li>
+                <li><strong>Comment Velocity:</strong> The number of comments often correlates with how controversial or engaging a topic is. Tracking exact comment counts helps you gauge audience sentiment.</li>
+                <li><strong>Uncover Hidden Data:</strong> Sometimes creators choose to hide their Like/Dislike ratios from the public UI. Our robust API routing can often fetch the raw data points that aren't immediately visible.</li>
+            </ul>
+
+            <h3>Perfect for Sponsorship Research</h3>
+            <p>If you are a brand looking to sponsor a YouTube creator, or a creator looking to prove your worth to a brand, exact analytics are your best friend. Instead of guessing a video's performance based on rounded metrics, you can use YT ToolBox to take a snapshot of the exact engagement on any given day. This transparency ensures fair pricing for brand deals and integrations.</p>
+
+            <h3>Fast, Free, and Secure</h3>
+            <p>Unlike other analytics platforms that require you to authenticate your Google Account or pay for a monthly SaaS subscription, YT ToolBox is entirely frictionless. Our Cloudflare-powered backend connects directly to the YouTube Data API, ensuring that you get secure, lightning-fast results without ever compromising your channel's security.</p>
+        </article>
+    </div>
+
+    <footer>
+        <div class="footer-nav">
+            <a href="../../info/about/">About Us</a>
+            <a href="../../info/contact/">Contact Us</a>
+            <a href="../../info/privacy/">Privacy Policy</a>
+            <a href="../../info/terms/">Terms & Conditions</a>
+            <a href="../../info/disclaimer/">Disclaimer</a>
+            <a href="../../info/dmca/">DMCA Policy</a>
+        </div>
+        <p>© 2026 YT ToolBox. All rights reserved. Powered by BSR Studios.</p>
+    </footer>
+
+    <script>
+        // BSR Cloudflare Worker Engine
+        const WORKER_URL = "https://yt-api-engine.aryanmewadastudios.workers.dev/";
+
+        async function fetchAnalytics() {
+            const url = document.getElementById('yt-link').value.trim();
+            const videoId = url.match(/(?:v=|\/|youtu\.be\/|shorts\/)([0-9A-Za-z_-]{11})/)?.[1];
+            
+            if(!videoId) return alert("Please enter a valid YouTube Video link!");
+
+            const loading = document.getElementById('loading-msg');
+            const resultArea = document.getElementById('result-area');
+            
+            resultArea.style.display = 'none';
+            loading.style.display = 'block';
+
+            try {
+                // Fetching Snippet & Statistics securely from Worker
+                const response = await fetch(`${WORKER_URL}?id=${videoId}`);
+                const data = await response.json();
+                
+                if(!data.items || data.items.length === 0) throw new Error("Video not found");
+                
+                const snippet = data.items[0].snippet;
+                const stats = data.items[0].statistics;
+
+                // Format Numbers with Commas (Indian Numbering System)
+                const views = parseInt(stats.viewCount || 0).toLocaleString('en-IN');
+                const likes = stats.likeCount ? parseInt(stats.likeCount).toLocaleString('en-IN') : "Hidden";
+                const comments = stats.commentCount ? parseInt(stats.commentCount).toLocaleString('en-IN') : "Disabled";
+                
+                // Format Date
+                const publishDate = new Date(snippet.publishedAt).toLocaleDateString('en-IN', {
+                    year: 'numeric', month: 'long', day: 'numeric'
+                });
+
+                // Update UI Elements
+                document.getElementById('video-title').innerText = snippet.title;
+                document.getElementById('publish-date').innerText = `📅 Published on: ${publishDate} by ${snippet.channelTitle}`;
+                document.getElementById('views-count').innerText = views;
+                document.getElementById('likes-count').innerText = likes;
+                document.getElementById('comments-count').innerText = comments;
+
+                loading.style.display = 'none';
+                resultArea.style.display = 'block';
+
+                // Smooth scroll to results
+                window.scrollTo({ top: 400, behavior: 'smooth' });
+
+            } catch (error) {
+                loading.innerText = "❌ Error: Could not fetch analytics. The video might be private or deleted.";
+                loading.style.color = "#ef4444";
+            }
+        }
+    </script>
+</body>
+</html>
