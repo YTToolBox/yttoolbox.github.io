@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thumbnail Extractor | YT Toolbox</title>
+    <style>
+        :root { --bg: #0f172a; --card: #1e293b; --primary: #f97316; --text: #f8fafc; }
+        * { margin:0; padding:0; box-sizing:border-box; font-family:'Segoe UI',sans-serif; text-decoration: none;}
+        body { background: var(--bg); color: var(--text); padding-bottom:50px; }
+        .navbar { background: var(--card); padding:20px; text-align:center; border-bottom:2px solid var(--primary); }
+        .container { max-width:800px; margin:40px auto; padding:0 20px; text-align:center; }
+        .back-btn { background:#334155; color:white; padding:10px 20px; border-radius:8px; display:inline-block; margin-bottom:30px; font-weight:bold; }
+        .panel { background:var(--card); padding:30px; border-radius:15px; border:1px solid #334155; }
+        input { width:100%; padding:15px; border-radius:8px; border:1px solid #334155; background:#0f172a; color:white; margin-bottom:20px; font-size:16px;}
+        .btn { background:var(--primary); color:white; border:none; padding:15px 30px; font-weight:bold; border-radius:8px; cursor:pointer; width:100%; font-size:18px;}
+        #result { margin-top:30px; display:none; }
+        img { width:100%; border-radius:10px; margin-bottom:20px; border: 2px dashed #334155; }
+        .dl-btn { background:#10b981; color:white; border:none; padding:15px; border-radius:8px; cursor:pointer; width:100%; font-weight:bold; font-size:18px;}
+    </style>
+</head>
+<body>
+<div class="navbar"><h1 style="color:var(--primary)">YT TOOLBOX</h1></div>
+<div class="container">
+    <div style="text-align: left;"><a href="../../" class="back-btn">← Home</a></div>
+    <div class="panel">
+        <h2>🖼️ HD Thumbnail Extractor</h2><br>
+        <input type="text" id="url" placeholder="Paste YouTube Video Link...">
+        <button class="btn" onclick="extract()">Extract HD Image</button>
+        <div id="result">
+            <img id="preview" crossorigin="anonymous">
+            <button class="dl-btn" id="dl">Download Now</button>
+        </div>
+    </div>
+</div>
+<script>
+    function extract() {
+        const id = document.getElementById('url').value.match(/(?:v=|\/|youtu\.be\/|shorts\/)([0-9A-Za-z_-]{11})/)?.[1];
+        if(!id) return alert("Sahi link daliye CEO Sir!");
+        const thumb = `https://img.youtube.com/vi/${id}/maxresdefault.jpg`;
+        document.getElementById('preview').src = thumb;
+        document.getElementById('result').style.display = 'block';
+        document.getElementById('dl').onclick = () => {
+            const img = new Image(); img.crossOrigin = "Anonymous";
+            img.onload = () => {
+                const c = document.createElement("canvas"); c.width = img.width; c.height = img.height;
+                c.getContext("2d").drawImage(img, 0, 0);
+                const a = document.createElement("a"); a.href = c.toDataURL("image/jpeg"); a.download = `Thumbnail_${id}.jpg`; a.click();
+            };
+            img.src = thumb;
+        };
+    }
+</script>
+</body>
+</html>
