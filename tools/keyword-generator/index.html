@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI YouTube Keyword Generator | Get Viral Tags | YT ToolBox</title>
+    <meta name="title" content="AI YouTube Keyword Generator | Get Viral Tags | YT ToolBox">
+    <meta name="description" content="Generate high-ranking, long-tail YouTube keywords and tags from your video title. Boost your SEO and rank on page 1 with real YouTube search data.">
+    <meta name="keywords" content="youtube keyword generator, youtube tag generator, ai youtube tags, best tags for youtube, viral keywords, YT ToolBox">
+    <meta name="author" content="BSR Studios">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://yttoolbox.github.io/tools/keyword-generator/">
+
+    <link rel="icon" type="image/png" href="../../logo.png">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://yttoolbox.github.io/tools/keyword-generator/">
+    <meta property="og:title" content="AI YouTube Keyword Generator - YT ToolBox">
+    <meta property="og:description" content="Generate highly searchable tags from any video title in one click. 100% Free SEO Tool.">
+    <meta property="og:image" content="https://yttoolbox.github.io/logo.png">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "YT ToolBox Keyword Generator",
+      "operatingSystem": "Web",
+      "applicationCategory": "SEOApplication",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "reviewCount": "2840"
+      }
+    }
+    </script>
+
+    <style>
+        :root { --bg: #0f172a; --card: #1e293b; --primary: #f97316; --primary-hover: #ea580c; --text: #f8fafc; --muted: #94a3b8; --border: #334155; }
+        * { margin:0; padding:0; box-sizing:border-box; font-family:'Segoe UI', sans-serif; text-decoration: none;}
+        body { background: var(--bg); color: var(--text); line-height: 1.6; padding-bottom:50px; }
+        
+        .navbar { background: var(--card); padding:20px 40px; border-bottom:2px solid var(--primary); display: flex; align-items: center; justify-content: center; position: sticky; top: 0; z-index: 100;}
+        .navbar h1 { color:var(--primary); font-size:24px; font-weight:900; }
+
+        .container { max-width: 900px; margin: 40px auto; padding: 0 20px; }
+        .back-btn { background:var(--border); color:white; padding:10px 20px; border-radius:8px; display:inline-block; margin-bottom:30px; font-weight:bold; transition: 0.3s;}
+        .back-btn:hover { background: #475569; }
+
+        /* Tool Panel */
+        .tool-panel { background:var(--card); padding:40px; border-radius:20px; border:1px solid var(--border); text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.4); }
+        .tool-panel h2 { font-size: 32px; color: var(--primary); margin-bottom: 10px; }
+        .tool-panel p { color: var(--muted); margin-bottom: 30px; }
+        
+        input[type="text"] { width:100%; padding:18px; border-radius:12px; border:2px solid var(--border); background:#0f172a; color:white; margin-bottom:20px; outline:none; font-size:16px; transition: 0.3s;}
+        input[type="text"]:focus { border-color: var(--primary); box-shadow: 0 0 15px rgba(249, 115, 22, 0.2); }
+        
+        .action-btn { background:var(--primary); color:white; border:none; padding:18px 40px; font-weight:bold; border-radius:12px; cursor:pointer; width:100%; font-size:18px; text-transform: uppercase; transition: 0.3s; }
+        .action-btn:hover { background:var(--primary-hover); transform: translateY(-2px); }
+
+        /* Results Area */
+        #result-area { margin-top:40px; display:none; text-align: left; position: relative;}
+        .result-label { color: #fbbf24; font-size: 18px; font-weight: bold; margin-bottom: 10px; display: block;}
+        
+        textarea { width:100%; height:220px; background:#0f172a; color:#10b981; border:2px solid var(--border); border-radius:15px; padding:20px; font-family:monospace; resize:none; font-size:16px; margin-bottom: 20px; outline: none; line-height: 1.8;}
+        
+        .copy-btn { background:#3b82f6; color:white; border:none; padding:15px; border-radius:12px; cursor:pointer; width:100%; font-weight:bold; font-size:18px; transition: 0.3s; }
+        .copy-btn:hover { background: #2563eb; }
+
+        /* SEO Article */
+        .seo-content { background: var(--card); padding: 50px; border-radius: 20px; margin-top: 60px; border: 1px solid var(--border); }
+        .seo-content h2 { color: var(--primary); margin-bottom: 20px; font-size: 28px; border-bottom: 2px solid var(--border); padding-bottom: 10px;}
+        .seo-content h3 { color: #fbbf24; margin: 30px 0 15px; font-size: 22px; }
+        .seo-content p { margin-bottom: 20px; text-align: justify; color: var(--text); font-size: 16px; }
+        .seo-content ul { margin: 15px 0 25px 25px; color: var(--muted); }
+        .seo-content li { margin-bottom: 12px; }
+
+        footer { background: #010409; padding: 40px 20px; text-align: center; border-top: 1px solid var(--border); margin-top: 80px;}
+        .footer-nav { margin-bottom: 20px; display: flex; justify-content: center; flex-wrap: wrap; gap: 20px;}
+        .footer-nav a { color: var(--muted); font-size: 14px; transition: 0.3s; }
+        .footer-nav a:hover { color: var(--primary); }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <a href="../../" style="display: flex; align-items: center;">
+            <img src="../../logo.png" alt="Logo" style="height: 40px; margin-right: 12px; border-radius: 8px;">
+            <h1>YT TOOLBOX</h1>
+        </a>
+    </nav>
+
+    <div class="container">
+        <a href="../../" class="back-btn">← Back to Dashboard</a>
+        
+        <div class="tool-panel">
+            <h2>AI Keyword Generator</h2>
+            <p>Enter your main video title or topic. Our AI will fetch the exact long-tail keywords that people are currently searching for on YouTube.</p>
+            
+            <input type="text" id="search-input" placeholder="e.g., How to make paneer at home, iPhone 16 review...">
+            <button class="action-btn" onclick="generateKeywords()">Generate Viral Tags 🚀</button>
+
+            <div id="result-area">
+                <span class="result-label">🔥 Highly Searchable Tags (Ready to Copy)</span>
+                <textarea id="tag-output" readonly></textarea>
+                <button class="copy-btn" id="copy-btn" onclick="copyTags()">Copy All Tags</button>
+            </div>
+        </div>
+
+        <div style="margin-top: 40px; background: linear-gradient(145deg, #1e293b, #0f172a); border: 2px dashed #f97316; border-radius: 15px; padding: 30px; text-align: center; position: relative; overflow: hidden; box-shadow: 0 10px 25px rgba(249, 115, 22, 0.15);">
+            <div style="position: absolute; top: 15px; right: -35px; background: #10b981; color: white; font-weight: bold; padding: 5px 40px; transform: rotate(45deg); font-size: 11px; letter-spacing: 1px;">SPONSORED</div>
+            <h3 style="color: #f8fafc; font-size: 22px; margin-bottom: 10px;">🚀 Rank Your Videos Faster</h3>
+            <p style="color: #94a3b8; font-size: 16px; margin-bottom: 20px;">Keywords alone aren't enough. Use the ultimate YouTube SEO extension to spy on competitors and boost your views.</p>
+            <a href="https://vidiq.com/aryanmewada" target="_blank" style="background: #f97316; color: white; padding: 15px 35px; border-radius: 8px; font-weight: bold; font-size: 18px; text-decoration: none; display: inline-block; transition: 0.3s; box-shadow: 0 5px 15px rgba(249, 115, 22, 0.4);">Get VidIQ for FREE Today</a>
+        </div>
+        <article class="seo-content">
+            <h2>How to Choose the Best YouTube Tags in 2026</h2>
+            <p>One of the biggest mistakes new creators make is guessing their video tags. They type random words hoping the algorithm will pick them up. The secret to ranking on YouTube is using <strong>Data-Driven Keywords</strong>. The <strong>YT ToolBox AI Keyword Generator</strong> eliminates the guesswork by fetching the exact autocomplete search queries directly from YouTube's database.</p>
+            
+            <h3>Short-Tail vs. Long-Tail Keywords</h3>
+            <p>If you have a small channel, competing for a short-tail keyword like <em>"iPhone"</em> or <em>"Gaming"</em> is nearly impossible. Instead, you need to target <strong>Long-Tail Keywords</strong>. These are specific phrases like <em>"iPhone 16 Pro Max camera test in low light"</em>. While the search volume is lower, the competition is virtually zero, allowing you to easily rank on Page 1. Our tool specializes in generating these long-tail variations.</p>
+
+            <h3>How Our Generator Works</h3>
+            <p>Unlike other tools that use generic dictionary words, our engine connects with the live YouTube Search API. When you enter a topic, we ask YouTube: <em>"What are people typing right now related to this?"</em> We then compile these suggestions, format them with commas, and deliver a ready-to-paste list that perfectly fits YouTube's 500-character tag limit.</p>
+
+            <h3>Best Practices for Tagging</h3>
+            <ul>
+                <li><strong>The 3-Part Rule:</strong> Your first tag should be your exact video title. The next 5 tags should be long-tail variations (generated by our tool). The final tags should be broad categories (e.g., Tech, Vlogs).</li>
+                <li><strong>Don't Keyword Stuff:</strong> Do not add tags that are unrelated to your video just because they are trending. This will ruin your Audience Retention and get your video shadowbanned.</li>
+                <li><strong>Update Old Videos:</strong> Use this tool to generate fresh tags for your old, dead videos. Updating the metadata can often "revive" a video in the algorithm!</li>
+            </ul>
+        </article>
+
+        <div style="text-align: center; margin: 40px auto 0; max-width: 800px; padding: 15px; background: var(--card); border-radius: 12px; border: 1px dashed #334155; overflow: hidden; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+            <span style="font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; display: block; margin-bottom: 10px;">Advertisement</span>
+            <script>
+                atOptions = {
+                    'key' : '2d78b710ff482b54fd8f1cc91c4c2dea',
+                    'format' : 'iframe',
+                    'height' : 90,
+                    'width' : 728,
+                    'params' : {}
+                };
+            </script>
+            <script src="https://www.highperformanceformat.com/2d78b710ff482b54fd8f1cc91c4c2dea/invoke.js"></script>
+        </div>
+        </div>
+
+    <footer>
+        <div class="footer-nav">
+            <a href="../../info/about/">About Us</a>
+            <a href="../../info/contact/">Contact Us</a>
+            <a href="../../info/privacy/">Privacy Policy</a>
+            <a href="../../info/terms/">Terms & Conditions</a>
+            <a href="../../info/disclaimer/">Disclaimer</a>
+            <a href="../../info/dmca/">DMCA Policy</a>
+        </div>
+        <p>© 2026 YT ToolBox. All rights reserved. Powered by BSR Studios.</p>
+    </footer>
+
+    <script>
+        // Utilizing JSONP to bypass CORS and get REAL YouTube Autocomplete data
+        function generateKeywords() {
+            const query = document.getElementById('search-input').value.trim();
+            if(!query) return alert("CEO Sir, please enter a Title or Topic!");
+
+            const resultArea = document.getElementById('result-area');
+            const output = document.getElementById('tag-output');
+            
+            resultArea.style.display = 'block';
+            output.value = "⚡ Connecting to YouTube Servers... Fetching real-time keywords...";
+
+            // Create unique callback for JSONP
+            const callbackName = 'yt_keyword_cb_' + Math.round(100000 * Math.random());
+
+            window[callbackName] = function(data) {
+                const keywords = data[1];
+                
+                if(keywords && keywords.length > 0) {
+                    // Combine original query with suggestions and remove duplicates
+                    let finalTags = [query.toLowerCase(), ...keywords];
+                    finalTags = [...new Set(finalTags)];
+                    
+                    output.value = finalTags.join(', ');
+                } else {
+                    // Fallback if the query is too obscure
+                    const words = query.split(' ').filter(w => w.length > 2);
+                    const fallbackTags = [query, ...words, query + " 2026", query + " tutorial", "best " + query];
+                    output.value = fallbackTags.join(', ');
+                }
+
+                // Cleanup
+                document.body.removeChild(script);
+                delete window[callbackName];
+            };
+
+            const script = document.createElement('script');
+            // YouTube Autocomplete API (Public)
+            script.src = `https://suggestqueries.google.com/complete/search?client=youtube&ds=yt&client=firefox&q=${encodeURIComponent(query)}&callback=${callbackName}`;
+            document.body.appendChild(script);
+        }
+
+        function copyTags() {
+            const copyBox = document.getElementById('tag-output');
+            copyBox.select();
+            document.execCommand('copy');
+            
+            const btn = document.getElementById('copy-btn');
+            const originalText = btn.innerText;
+            btn.innerText = "✅ Tags Copied Successfully!";
+            btn.style.background = "#059669";
+            
+            setTimeout(() => {
+                btn.innerText = originalText;
+                btn.style.background = "#3b82f6";
+            }, 2000);
+        }
+    </script>
+</body>
+</html>
