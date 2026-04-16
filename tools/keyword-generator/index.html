@@ -85,7 +85,7 @@
             <button class="action-btn" onclick="generateKeywords()">Analyze Context & Generate 🚀</button>
 
             <div id="result-area">
-                <span class="result-label">🔥 Contextual & Related Tags (Ready to Copy)</span>
+                <span class="result-label">🔥 Highly Relevant Tags (Ready to Copy)</span>
                 <textarea id="tag-output" readonly></textarea>
                 <button class="copy-btn" id="copy-btn" onclick="copyTags()">Copy All Tags</button>
             </div>
@@ -124,15 +124,7 @@
         </div>
 
     <footer>
-        <div class="footer-nav">
-            <a href="../../info/about/">About Us</a>
-            <a href="../../info/contact/">Contact Us</a>
-            <a href="../../info/privacy/">Privacy Policy</a>
-            <a href="../../info/terms/">Terms & Conditions</a>
-            <a href="../../info/disclaimer/">Disclaimer</a>
-            <a href="../../info/dmca/">DMCA Policy</a>
-        </div>
-        <p>© 2026 YT ToolBox. All rights reserved. Powered by BSR Studios.</p>
+        <p style="color: #475569;">© 2026 YT ToolBox. All rights reserved. Powered by BSR Studios.</p>
     </footer>
 
     <script>
@@ -151,7 +143,7 @@
 
                 const script = document.createElement('script');
                 script.src = `https://suggestqueries.google.com/complete/search?client=youtube&ds=yt&client=firefox&q=${encodeURIComponent(query)}&callback=${callbackName}`;
-                script.onerror = () => { resolve([]); }; // Resolve empty array on error so Promise.all doesn't fail
+                script.onerror = () => { resolve([]); }; 
                 document.body.appendChild(script);
             });
         }
@@ -164,10 +156,10 @@
             const output = document.getElementById('tag-output');
             
             resultArea.style.display = 'block';
-            output.value = "⚡ AI Deep Scanning Context... Running multiple API queries...";
+            output.value = "⚡ AI Deep Scanning Context... Running Strict Filtering...";
 
-            // 1. NLP LOGIC: Remove Stop Words to find "Core Niche"
-            const stopWords = ['how', 'to', 'in', 'on', 'for', 'the', 'a', 'an', 'is', 'of', 'and', 'with', 'my', 'i', 'best', 'top', 'new', 'review'];
+            // 1. NLP LOGIC: Remove Stop Words
+            const stopWords = ['how', 'to', 'in', 'on', 'for', 'the', 'a', 'an', 'is', 'of', 'and', 'with', 'my', 'i', 'best', 'top', 'new', 'review', 'do', 'does', 'can', 'any'];
             let words = rawQuery.split(' ').filter(w => !stopWords.includes(w) && w.length > 1);
             
             // Generate Smart Search Variations
@@ -175,37 +167,41 @@
             
             if (words.length > 0) {
                 const coreQuery = words.join(' ');
-                if (coreQuery !== rawQuery) queriesToRun.push(coreQuery); // e.g., "games pc"
+                if (coreQuery !== rawQuery) queriesToRun.push(coreQuery);
                 
-                // Reverse the core words (e.g., "games pc" becomes "pc games")
+                // Reverse words SAFELY (without mutating array)
                 if (words.length > 1) {
-                    queriesToRun.push(words.reverse().join(' ')); 
+                    queriesToRun.push([...words].reverse().join(' ')); 
                 }
                 
-                // Add year variation
-                queriesToRun.push(words[0] + " 2026"); 
+                // SAFELY add year to the FULL core query, not just one word
+                queriesToRun.push(coreQuery + " 2026"); 
             }
 
             try {
-                // 2. Fetch all variations concurrently from YouTube API
+                // 2. Fetch all variations concurrently
                 const apiPromises = queriesToRun.map(q => fetchYTKeywords(q));
                 const resultsArray = await Promise.all(apiPromises);
 
-                // 3. Combine and Clean the results
+                // 3. Combine Results
                 let allTags = [];
                 resultsArray.forEach(res => allTags.push(...res));
 
-                // Filter out junk, trim, and remove exact duplicates
-                allTags = allTags.filter(tag => tag.length > 2);
-                let uniqueTags = [...new Set(allTags)];
+                // 4. THE STRICT AI FILTER (Fixes the "PPC Notification" bug!)
+                allTags = allTags.filter(tag => {
+                    if(tag.length <= 2) return false;
+                    // Tag MUST contain at least one of our core words to be valid
+                    return words.some(w => tag.includes(w));
+                });
 
-                // Put the main topic first, followed by the deep context tags
+                // Remove exact duplicates
+                let uniqueTags = [...new Set(allTags)];
                 let finalTagsList = [...new Set([rawQuery, ...uniqueTags])];
 
                 if(finalTagsList.length > 1) {
                     output.value = finalTagsList.join(', ');
                 } else {
-                    output.value = `${rawQuery}, ${words.join(', ')}, ${rawQuery} 2026, ${rawQuery} tutorial`;
+                    output.value = `${rawQuery}, ${words.join(', ')}, ${rawQuery} 2026`;
                 }
 
             } catch (error) {
