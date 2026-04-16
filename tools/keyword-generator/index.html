@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AI YouTube Keyword Generator | Get Viral Tags | YT ToolBox</title>
     <meta name="title" content="AI YouTube Keyword Generator | Get Viral Tags | YT ToolBox">
-    <meta name="description" content="Generate high-ranking, long-tail YouTube keywords and tags from your video title. Boost your SEO and rank on page 1 with real YouTube search data.">
+    <meta name="description" content="Generate high-ranking, contextual YouTube keywords and tags from your video title. Boost your SEO and rank on page 1 with real YouTube search data.">
     <meta name="keywords" content="youtube keyword generator, youtube tag generator, ai youtube tags, best tags for youtube, viral keywords, YT ToolBox">
     <meta name="author" content="BSR Studios">
     <meta name="robots" content="index, follow">
@@ -16,28 +16,8 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://yttoolbox.github.io/tools/keyword-generator/">
     <meta property="og:title" content="AI YouTube Keyword Generator - YT ToolBox">
-    <meta property="og:description" content="Generate highly searchable tags from any video title in one click. 100% Free SEO Tool.">
+    <meta property="og:description" content="Generate highly searchable contextual tags from any video title in one click. 100% Free SEO Tool.">
     <meta property="og:image" content="https://yttoolbox.github.io/logo.png">
-
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "SoftwareApplication",
-      "name": "YT ToolBox Keyword Generator",
-      "operatingSystem": "Web",
-      "applicationCategory": "SEOApplication",
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "USD"
-      },
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "4.9",
-        "reviewCount": "2840"
-      }
-    }
-    </script>
 
     <style>
         :root { --bg: #0f172a; --card: #1e293b; --primary: #f97316; --primary-hover: #ea580c; --text: #f8fafc; --muted: #94a3b8; --border: #334155; }
@@ -66,7 +46,7 @@
         #result-area { margin-top:40px; display:none; text-align: left; position: relative;}
         .result-label { color: #fbbf24; font-size: 18px; font-weight: bold; margin-bottom: 10px; display: block;}
         
-        textarea { width:100%; height:220px; background:#0f172a; color:#10b981; border:2px solid var(--border); border-radius:15px; padding:20px; font-family:monospace; resize:none; font-size:16px; margin-bottom: 20px; outline: none; line-height: 1.8;}
+        textarea { width:100%; height:250px; background:#0f172a; color:#10b981; border:2px solid var(--border); border-radius:15px; padding:20px; font-family:monospace; resize:none; font-size:16px; margin-bottom: 20px; outline: none; line-height: 1.8;}
         
         .copy-btn { background:#3b82f6; color:white; border:none; padding:15px; border-radius:12px; cursor:pointer; width:100%; font-weight:bold; font-size:18px; transition: 0.3s; }
         .copy-btn:hover { background: #2563eb; }
@@ -98,14 +78,14 @@
         <a href="../../" class="back-btn">← Back to Dashboard</a>
         
         <div class="tool-panel">
-            <h2>AI Keyword Generator</h2>
-            <p>Enter your main video title or topic. Our AI will fetch the exact long-tail keywords that people are currently searching for on YouTube.</p>
+            <h2>Deep-Context Keyword Generator</h2>
+            <p>Enter your main video title. Our AI Engine analyzes the context of your topic to fetch diverse, high-ranking related tags directly from YouTube Search.</p>
             
-            <input type="text" id="search-input" placeholder="e.g., How to make paneer at home, iPhone 16 review...">
-            <button class="action-btn" onclick="generateKeywords()">Generate Viral Tags 🚀</button>
+            <input type="text" id="search-input" placeholder="e.g., Best games for PC, How to edit fast...">
+            <button class="action-btn" onclick="generateKeywords()">Analyze Context & Generate 🚀</button>
 
             <div id="result-area">
-                <span class="result-label">🔥 Highly Searchable Tags (Ready to Copy)</span>
+                <span class="result-label">🔥 Contextual & Related Tags (Ready to Copy)</span>
                 <textarea id="tag-output" readonly></textarea>
                 <button class="copy-btn" id="copy-btn" onclick="copyTags()">Copy All Tags</button>
             </div>
@@ -124,15 +104,8 @@
             <h3>Short-Tail vs. Long-Tail Keywords</h3>
             <p>If you have a small channel, competing for a short-tail keyword like <em>"iPhone"</em> or <em>"Gaming"</em> is nearly impossible. Instead, you need to target <strong>Long-Tail Keywords</strong>. These are specific phrases like <em>"iPhone 16 Pro Max camera test in low light"</em>. While the search volume is lower, the competition is virtually zero, allowing you to easily rank on Page 1. Our tool specializes in generating these long-tail variations.</p>
 
-            <h3>How Our Generator Works</h3>
-            <p>Unlike other tools that use generic dictionary words, our engine connects with the live YouTube Search API. When you enter a topic, we ask YouTube: <em>"What are people typing right now related to this?"</em> We then compile these suggestions, format them with commas, and deliver a ready-to-paste list that perfectly fits YouTube's 500-character tag limit.</p>
-
-            <h3>Best Practices for Tagging</h3>
-            <ul>
-                <li><strong>The 3-Part Rule:</strong> Your first tag should be your exact video title. The next 5 tags should be long-tail variations (generated by our tool). The final tags should be broad categories (e.g., Tech, Vlogs).</li>
-                <li><strong>Don't Keyword Stuff:</strong> Do not add tags that are unrelated to your video just because they are trending. This will ruin your Audience Retention and get your video shadowbanned.</li>
-                <li><strong>Update Old Videos:</strong> Use this tool to generate fresh tags for your old, dead videos. Updating the metadata can often "revive" a video in the algorithm!</li>
-            </ul>
+            <h3>How Our Deep-Context Engine Works</h3>
+            <p>Most tag generators simply take your title and add words to the end of it. Our updated Deep-Context Engine removes "stop words" (like <em>how, to, for, best</em>) to find the core niche of your video. It then performs multiple parallel searches on the YouTube API to bring you a diverse mix of broad category tags and specific long-tail keywords, giving you the perfect metadata balance.</p>
         </article>
 
         <div style="text-align: center; margin: 40px auto 0; max-width: 800px; padding: 15px; background: var(--card); border-radius: 12px; border: 1px dashed #334155; overflow: hidden; display: flex; flex-direction: column; align-items: center; justify-content: center;">
@@ -163,45 +136,81 @@
     </footer>
 
     <script>
-        // Utilizing JSONP to bypass CORS and get REAL YouTube Autocomplete data
-        function generateKeywords() {
-            const query = document.getElementById('search-input').value.trim();
-            if(!query) return alert("CEO Sir, please enter a Title or Topic!");
+        // PROMISIFIED JSONP FUNCTION (For Multiple Parallel API Calls)
+        function fetchYTKeywords(query) {
+            return new Promise((resolve) => {
+                if(!query) return resolve([]);
+                
+                const callbackName = 'yt_cb_' + Math.round(1000000 * Math.random());
+                
+                window[callbackName] = function(data) {
+                    resolve(data[1] || []);
+                    try { document.body.removeChild(script); } catch(e){}
+                    delete window[callbackName];
+                };
+
+                const script = document.createElement('script');
+                script.src = `https://suggestqueries.google.com/complete/search?client=youtube&ds=yt&client=firefox&q=${encodeURIComponent(query)}&callback=${callbackName}`;
+                script.onerror = () => { resolve([]); }; // Resolve empty array on error so Promise.all doesn't fail
+                document.body.appendChild(script);
+            });
+        }
+
+        async function generateKeywords() {
+            const rawQuery = document.getElementById('search-input').value.trim().toLowerCase();
+            if(!rawQuery) return alert("CEO Sir, please enter a Video Title or Topic!");
 
             const resultArea = document.getElementById('result-area');
             const output = document.getElementById('tag-output');
             
             resultArea.style.display = 'block';
-            output.value = "⚡ Connecting to YouTube Servers... Fetching real-time keywords...";
+            output.value = "⚡ AI Deep Scanning Context... Running multiple API queries...";
 
-            // Create unique callback for JSONP
-            const callbackName = 'yt_keyword_cb_' + Math.round(100000 * Math.random());
-
-            window[callbackName] = function(data) {
-                const keywords = data[1];
+            // 1. NLP LOGIC: Remove Stop Words to find "Core Niche"
+            const stopWords = ['how', 'to', 'in', 'on', 'for', 'the', 'a', 'an', 'is', 'of', 'and', 'with', 'my', 'i', 'best', 'top', 'new', 'review'];
+            let words = rawQuery.split(' ').filter(w => !stopWords.includes(w) && w.length > 1);
+            
+            // Generate Smart Search Variations
+            let queriesToRun = [rawQuery]; // Exact title
+            
+            if (words.length > 0) {
+                const coreQuery = words.join(' ');
+                if (coreQuery !== rawQuery) queriesToRun.push(coreQuery); // e.g., "games pc"
                 
-                if(keywords && keywords.length > 0) {
-                    // Combine original query with suggestions and remove duplicates
-                    let finalTags = [query.toLowerCase(), ...keywords];
-                    finalTags = [...new Set(finalTags)];
-                    
-                    output.value = finalTags.join(', ');
+                // Reverse the core words (e.g., "games pc" becomes "pc games")
+                if (words.length > 1) {
+                    queriesToRun.push(words.reverse().join(' ')); 
+                }
+                
+                // Add year variation
+                queriesToRun.push(words[0] + " 2026"); 
+            }
+
+            try {
+                // 2. Fetch all variations concurrently from YouTube API
+                const apiPromises = queriesToRun.map(q => fetchYTKeywords(q));
+                const resultsArray = await Promise.all(apiPromises);
+
+                // 3. Combine and Clean the results
+                let allTags = [];
+                resultsArray.forEach(res => allTags.push(...res));
+
+                // Filter out junk, trim, and remove exact duplicates
+                allTags = allTags.filter(tag => tag.length > 2);
+                let uniqueTags = [...new Set(allTags)];
+
+                // Put the main topic first, followed by the deep context tags
+                let finalTagsList = [...new Set([rawQuery, ...uniqueTags])];
+
+                if(finalTagsList.length > 1) {
+                    output.value = finalTagsList.join(', ');
                 } else {
-                    // Fallback if the query is too obscure
-                    const words = query.split(' ').filter(w => w.length > 2);
-                    const fallbackTags = [query, ...words, query + " 2026", query + " tutorial", "best " + query];
-                    output.value = fallbackTags.join(', ');
+                    output.value = `${rawQuery}, ${words.join(', ')}, ${rawQuery} 2026, ${rawQuery} tutorial`;
                 }
 
-                // Cleanup
-                document.body.removeChild(script);
-                delete window[callbackName];
-            };
-
-            const script = document.createElement('script');
-            // YouTube Autocomplete API (Public)
-            script.src = `https://suggestqueries.google.com/complete/search?client=youtube&ds=yt&client=firefox&q=${encodeURIComponent(query)}&callback=${callbackName}`;
-            document.body.appendChild(script);
+            } catch (error) {
+                output.value = "❌ Network Error while contacting YouTube API.";
+            }
         }
 
         function copyTags() {
